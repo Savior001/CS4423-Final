@@ -7,6 +7,8 @@ public class Movement : MonoBehaviour {
     [SerializeField] float jumpForce = 10f;
     [SerializeField] float groundDistance = 1f;
     [SerializeField] LayerMask groundMask;
+    [SerializeField] AnimationStateChanger animationStateChanger;
+    [SerializeField] Transform body;
     Rigidbody2D rb;
 
     void Awake() {
@@ -17,6 +19,18 @@ public class Movement : MonoBehaviour {
         mvec *= speed;
         mvec.y = rb.velocity.y;
         rb.velocity = mvec;
+
+        if (mvec.magnitude > 0) {
+            animationStateChanger.ChangeAnimationState("Run", speed/10);
+
+            if (mvec.x > 0) {
+                body.localScale = new Vector3(-1, 1, 1);
+            } else if (mvec.x < 0) {
+                body.localScale = new Vector3(1, 1, 1);
+            }
+        } else {
+            animationStateChanger.ChangeAnimationState("Idle");
+        }
     }
 
     public void Stop() {
