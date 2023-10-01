@@ -22,6 +22,6 @@ public class AnimationStateChanger : MonoBehaviour {
         }
 
         currentState = newAnimationState;
-        animator.Play(newAnimationState);
+        animator.Play(currentState);
     }
 }
