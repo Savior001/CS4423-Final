@@ -26,17 +26,17 @@ public class Movement : MonoBehaviour {
         if (wallSlide) WallSlide();
     }
 
-    public void Move(Vector3 mvec) {
-        mvec *= speed;
-        mvec.y = rb.velocity.y;
-        rb.velocity = mvec;
+    public void Move(Vector3 vel) {
+        vel *= speed;
+        vel.y = rb.velocity.y;
+        rb.velocity = vel;
 
-        if (mvec.magnitude > 0) {
+        if (vel.magnitude > 0) {
             animationStateChanger?.ChangeAnimationState("Run", speed/10);
 
-            if (mvec.x > 0) {
+            if (vel.x > 0) {
                 body.localScale = new Vector3(-1, 1, 1);
-            } else if (mvec.x < 0) {
+            } else if (vel.x < 0) {
                 body.localScale = new Vector3(1, 1, 1);
             }
         } else {

@@ -608,6 +608,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 7576550466917981128}
+  fpe: {fileID: 1413058544}
 --- !u!4 &1317163710
 Transform:
   m_ObjectHideFlags: 0
@@ -728,6 +729,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1413058544 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5217703782153231639, guid: e194e81a9c7cdca4cb2afa97ffeca799, type: 3}
+  m_PrefabInstance: {fileID: 7576550466917981127}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4765673b08370c4cb24e8b84b696419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1443170159 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8610698373454611725, guid: 180137cd300bc5247b74e22dc1ea0e0d, type: 3}
@@ -966,6 +978,18 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5037909992664542764, guid: 180137cd300bc5247b74e22dc1ea0e0d, type: 3}
+      propertyPath: m_Color.b
+      value: 0.6981132
+      objectReference: {fileID: 0}
+    - target: {fileID: 5037909992664542764, guid: 180137cd300bc5247b74e22dc1ea0e0d, type: 3}
+      propertyPath: m_Color.g
+      value: 0.6981132
+      objectReference: {fileID: 0}
+    - target: {fileID: 5037909992664542764, guid: 180137cd300bc5247b74e22dc1ea0e0d, type: 3}
+      propertyPath: m_Color.r
+      value: 0.6981132
+      objectReference: {fileID: 0}
     - target: {fileID: 8610698373454611725, guid: 180137cd300bc5247b74e22dc1ea0e0d, type: 3}
       propertyPath: m_TagString
       value: Despawn
@@ -1091,8 +1115,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8269466201805552998, guid: e194e81a9c7cdca4cb2afa97ffeca799, type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
+    - target: {fileID: 7469183141422691028, guid: e194e81a9c7cdca4cb2afa97ffeca799, type: 3}
+      propertyPath: m_LocalScale.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7469183141422691028, guid: e194e81a9c7cdca4cb2afa97ffeca799, type: 3}
+      propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
