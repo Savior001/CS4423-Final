@@ -877,6 +877,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Superior
       objectReference: {fileID: 0}
+    - target: {fileID: 2482778415832336800, guid: 839d4f7fc06ea4a4fac922331e5ba099, type: 3}
+      propertyPath: documentPrefab
+      value: 
+      objectReference: {fileID: 3369850811086130620, guid: 83da2ea88fe29f846a6894e2d43e1929, type: 3}
     - target: {fileID: 6518139108258336127, guid: 839d4f7fc06ea4a4fac922331e5ba099, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
