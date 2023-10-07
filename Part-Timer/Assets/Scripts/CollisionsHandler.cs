@@ -25,9 +25,10 @@ public class CollisionsHandler : MonoBehaviour {
         if (entityPrefab.tag == "Document") {
             // Debug.Log("[" + entityPrefab.tag + "] collision with " + collisionEntity.tag);
             if (collisionEntity.tag == "Player") {
-                scoreHandler.AddScore();
+                scoreHandler.AddScore(150);
                 Destroy(this.gameObject);
             } else if (collisionEntity.tag == "Despawn") {
+                scoreHandler.DeductScore(5);
                 Destroy(this.gameObject);
             }
         }
@@ -43,7 +44,7 @@ public class CollisionsHandler : MonoBehaviour {
                     Destroy(collisionEntity.gameObject);
                 }
 
-                scoreHandler.DeductScore();
+                scoreHandler.DeductScore(50);
                 Destroy(this.gameObject);
             } else if (collisionEntity.tag == "Despawn") {
                 Destroy(this.gameObject);
@@ -53,7 +54,7 @@ public class CollisionsHandler : MonoBehaviour {
         if (entityPrefab.tag == "Powerup") {
             // Debug.Log("[" + entityPrefab.tag + "] collision with " + collisionEntity.tag);
             if (collisionEntity.tag == "Player") {
-                // add powerup count/ or signify type of powerup
+                // add powerup count or signify type of powerup
                 powerupHandler.AddPowerup();
                 Destroy(this.gameObject);
             } else if (collisionEntity.tag == "Despawn") {

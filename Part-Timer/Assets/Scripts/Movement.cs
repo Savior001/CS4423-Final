@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour {
     [SerializeField] float health = 100f;
-    [SerializeField] float speed = 10f;
+    [SerializeField] public float speed = 10f;
     [SerializeField] float jumpForce = 10f;
     [SerializeField] float wallSlideModifier = 5f;
     [SerializeField] float groundDistance = 1f;
@@ -16,6 +16,7 @@ public class Movement : MonoBehaviour {
     [SerializeField] AnimationStateChanger animationStateChanger;
     Rigidbody2D rb;
     HealthHandler healthHandler;
+    PowerupHandler powerupHandler;
     private bool onGround;
     private bool onWall;
     private bool wallSlide => onWall && !onGround && rb.velocity.y < 0f;
@@ -23,15 +24,22 @@ public class Movement : MonoBehaviour {
     void Awake() {
         rb = GetComponent<Rigidbody2D>();
         healthHandler = HealthHandler.singleton;
+        powerupHandler = PowerupHandler.singleton;
         healthHandler.hp = health;
+        powerupHandler.playerSpeed = speed;
     }
 
     void Start() {
     }
 
     void FixedUpdate() {
+        var newSpeed = powerupHandler.playerSpeed;
         CheckCollisions();
         if (wallSlide) WallSlide();
+        if (speed < newSpeed) {
+            speed = newSpeed;
+            Debug.Log("new speed: " + speed);
+        }
     }
 
     public void Move(Vector3 vel) {
@@ -80,6 +88,5 @@ public class Movement : MonoBehaviour {
     private void CheckCollisions() {
         onGround = Physics2D.OverlapCircleAll(transform.position - new Vector3(0, 0.5f, 0), groundDistance, groundMask).Length > 0;
         onWall = Physics2D.OverlapCircleAll(transform.position - new Vector3(0, 0.5f, 0), wallDistance, wallWask).Length > 0;
-
     }
 }

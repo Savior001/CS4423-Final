@@ -267,6 +267,10 @@ PrefabInstance:
       propertyPath: entityPrefab
       value: 
       objectReference: {fileID: 3941577438751496148}
+    - target: {fileID: 5270699360229267773, guid: 109f95cdeb5dbe742bc805f17238ca6e, type: 3}
+      propertyPath: playerMovement
+      value: 
+      objectReference: {fileID: -1844867989858578133}
     - target: {fileID: 7416186872864012030, guid: 109f95cdeb5dbe742bc805f17238ca6e, type: 3}
       propertyPath: m_LocalScale.z
       value: -1

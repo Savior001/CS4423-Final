@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FallingPapersEffect : MonoBehaviour {
-    [SerializeField] GameObject entityPrefab;
+    [SerializeField] Movement playerMovement;
     ParticleSystem particleSystem;
     
     void Start() {
         particleSystem = GetComponent<ParticleSystem>();
+    }
+
+    void FixedUpdate() {
+        var emission = particleSystem.emission;
+        emission.rateOverDistance = playerMovement.speed * 0.035f;
     }
     
     public void ActivateEffect(Vector3 vel) {

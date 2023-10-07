@@ -21,14 +21,14 @@ public class RandomEntitySpawner : MonoBehaviour {
 
         IEnumerator SpawnEntitiesOverTimeRoutine() {
             while(true) {
-                choice = Random.Range(1,100);
+                choice = Random.Range(0,250);
                 // Debug.Log("Choice is: " + choice);
                 
-                if (choice == 50) {
+                if (choice % 25 == 0) {
                     spawnChoice = powerupPrefab;
-                } else if (choice < 50) {
+                } else if (choice < 125) {
                     spawnChoice = documentPrefab;
-                } else if (choice > 50) {
+                } else if (choice > 124) {
                     spawnChoice = damagePrefab;
                 }
 

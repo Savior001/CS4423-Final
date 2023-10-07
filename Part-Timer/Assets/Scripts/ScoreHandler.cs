@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ScoreHandler : MonoBehaviour {
     Text score;
-    int point = 0;
+    float point = 0;
     public static ScoreHandler singleton;
 
     void Awake() {
@@ -21,16 +21,16 @@ public class ScoreHandler : MonoBehaviour {
         point = int.Parse(score.text);
     }
 
-    public void AddScore() {
-        point += 500;
+    public void AddScore(float p) {
+        point += p;
         score.text = point.ToString();
     }
 
-    public void DeductScore() {
-        if (point - 100 < 0) {
+    public void DeductScore(float p) {
+        if (point - p < 0) {
             point = 0;
         } else {
-            point -= 100;
+            point -= p;
             score.text = point.ToString();
         }
     }
