@@ -4,14 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneUpdateHandler : MonoBehaviour {
-    // GameOverButtons gameOverButtons;
-
-    // void Start() {
-    //     gameOverButtons = GameOverButtons.singleton;
-    // }
-
     public void PlayGame() {
-        // gameOverButtons.ButtonVisibility(false);
         SceneManager.LoadScene("GameScene");
     }
 
@@ -20,8 +13,7 @@ public class SceneUpdateHandler : MonoBehaviour {
         Application.Quit();
     }
 
-    public void MainMenuy() {
-        // gameOverButtons.ButtonVisibility(false);
+    public void MainMenu() {
         SceneManager.LoadScene("MainMenu");
     }
 }

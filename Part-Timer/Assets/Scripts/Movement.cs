@@ -4,22 +4,29 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Movement : MonoBehaviour {
+    [SerializeField] float health = 100f;
     [SerializeField] float speed = 10f;
     [SerializeField] float jumpForce = 10f;
     [SerializeField] float wallSlideModifier = 5f;
     [SerializeField] float groundDistance = 1f;
-    [SerializeField] LayerMask groundMask;
     [SerializeField] float wallDistance = 1f;
+    [SerializeField] LayerMask groundMask;
     [SerializeField] LayerMask wallWask;
-    [SerializeField] AnimationStateChanger animationStateChanger;
     [SerializeField] Transform body;
+    [SerializeField] AnimationStateChanger animationStateChanger;
     Rigidbody2D rb;
+    HealthHandler healthHandler;
     private bool onGround;
     private bool onWall;
     private bool wallSlide => onWall && !onGround && rb.velocity.y < 0f;
 
     void Awake() {
         rb = GetComponent<Rigidbody2D>();
+        healthHandler = HealthHandler.singleton;
+        healthHandler.hp = health;
+    }
+
+    void Start() {
     }
 
     void FixedUpdate() {

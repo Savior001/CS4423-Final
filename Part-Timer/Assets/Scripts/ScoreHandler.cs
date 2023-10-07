@@ -27,7 +27,11 @@ public class ScoreHandler : MonoBehaviour {
     }
 
     public void DeductScore() {
-        point -= 100;
-        score.text = point.ToString();
+        if (point - 100 < 0) {
+            point = 0;
+        } else {
+            point -= 100;
+            score.text = point.ToString();
+        }
     }
 }

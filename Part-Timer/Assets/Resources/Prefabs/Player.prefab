@@ -47,19 +47,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c91e498fef39cdb45af6460093cf0508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
   speed: 10
   jumpForce: 25
   wallSlideModifier: 1.5
   groundDistance: 0.5
+  wallDistance: 0.5
   groundMask:
     serializedVersion: 2
     m_Bits: 8
-  wallDistance: 0.5
   wallWask:
     serializedVersion: 2
     m_Bits: 64
-  animationStateChanger: {fileID: 2450031341738177655}
   body: {fileID: 5706875961266799393}
+  animationStateChanger: {fileID: 2450031341738177655}
 --- !u!50 &6852460330931230514
 Rigidbody2D:
   serializedVersion: 4
@@ -267,6 +268,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3941577438751496148}
     - target: {fileID: 7416186872864012030, guid: 109f95cdeb5dbe742bc805f17238ca6e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7416186872864012030, guid: 109f95cdeb5dbe742bc805f17238ca6e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.375
       objectReference: {fileID: 0}
@@ -305,6 +310,10 @@ PrefabInstance:
     - target: {fileID: 7416186872864012030, guid: 109f95cdeb5dbe742bc805f17238ca6e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -42
+      objectReference: {fileID: 0}
+    - target: {fileID: 7416186872864012030, guid: 109f95cdeb5dbe742bc805f17238ca6e, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7753584801271528227, guid: 109f95cdeb5dbe742bc805f17238ca6e, type: 3}
       propertyPath: m_Name

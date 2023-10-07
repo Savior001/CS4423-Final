@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HealthHandler : MonoBehaviour {
     Text healthbar;
-    [SerializeField] public int hp = 1000;
+    [SerializeField] public float hp = 1000;
     public static HealthHandler singleton;
 
     void Awake() {
