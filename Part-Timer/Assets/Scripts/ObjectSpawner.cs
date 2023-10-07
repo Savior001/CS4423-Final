@@ -5,6 +5,7 @@ using UnityEngine;
 public class RandomEntitySpawner : MonoBehaviour {
     [SerializeField] GameObject documentPrefab;
     [SerializeField] GameObject damagePrefab;
+    [SerializeField] GameObject powerupPrefab;
     [SerializeField] GameObject superiorPrefab;
     // [SerializeField] float despawnTimer = 3f;
     [SerializeField] float spawnHeigth = 3f;
@@ -20,19 +21,21 @@ public class RandomEntitySpawner : MonoBehaviour {
 
         IEnumerator SpawnEntitiesOverTimeRoutine() {
             while(true) {
-                choice = Random.Range(1,10);
+                choice = Random.Range(1,100);
                 // Debug.Log("Choice is: " + choice);
                 
-                if (choice <= 5) {
+                if (choice == 50) {
+                    spawnChoice = powerupPrefab;
+                } else if (choice < 50) {
                     spawnChoice = documentPrefab;
-                } else if (choice > 5) {
+                } else if (choice > 50) {
                     spawnChoice = damagePrefab;
                 }
 
                 yield return new WaitForSeconds(Random.Range(0.1f, 1.5f));
-                GameObject newBox;
-                newBox = Instantiate(spawnChoice, new Vector3(superiorPrefab.transform.position.x, spawnHeigth, 0), Quaternion.identity);
-                // Destroy(newBox, despawnTimer);
+                GameObject spawnObject;
+                spawnObject = Instantiate(spawnChoice, new Vector3(superiorPrefab.transform.position.x, spawnHeigth, 0), Quaternion.identity);
+                // Destroy(spawnObject, despawnTimer);
                 yield return null;
             }
         }

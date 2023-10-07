@@ -220,8 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da56f4b73ac1e5c4ba152782de4d751c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  documentPrefab: {fileID: 3061265024988844704, guid: bb1a2ae9e0f7e3146a4c5330b60b5a85, type: 3}
+  documentPrefab: {fileID: 3369850811086130620, guid: 83da2ea88fe29f846a6894e2d43e1929, type: 3}
   damagePrefab: {fileID: 7161776525189735613, guid: 4160b00bdcb1434498f167efcfa08a77, type: 3}
   superiorPrefab: {fileID: 1165166787553689312}
-  despawnTimer: 3
   spawnHeigth: 3

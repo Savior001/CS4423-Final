@@ -8,6 +8,8 @@ TagManager:
   - Superior
   - Damage
   - Despawn
+  - Powerup
+  - GameOverButtons
   layers:
   - Default
   - TransparentFX

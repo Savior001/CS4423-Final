@@ -9,10 +9,14 @@ public class CollisionsHandler : MonoBehaviour {
     // AudioSource audioSource;
     ScoreHandler scoreHandler;
     HealthHandler healthHandler;
+    PowerupHandler powerupHandler;
+    CanvasFadeHandler canvasFadeHandler;
 
     void Start() {
         scoreHandler = ScoreHandler.singleton;
         healthHandler = HealthHandler.singleton;
+        powerupHandler = PowerupHandler.singleton;
+        canvasFadeHandler = CanvasFadeHandler.singleton;
         // unitGetClip = Resources.Load<AudioClip>("UnitGet");
         // audioSource = GetComponent<AudioSource>();
     }
@@ -35,6 +39,7 @@ public class CollisionsHandler : MonoBehaviour {
 
                 if (healthHandler.hp == 0) {
                     Debug.Log("You ded...");
+                    canvasFadeHandler.FadeIn();
                     Destroy(collisionEntity.gameObject);
                 }
 
@@ -45,6 +50,16 @@ public class CollisionsHandler : MonoBehaviour {
             }
         }
 
+        if (entityPrefab.tag == "Powerup") {
+            // Debug.Log("[" + entityPrefab.tag + "] collision with " + collisionEntity.tag);
+            if (collisionEntity.tag == "Player") {
+                // add powerup count/ or signify type of powerup
+                powerupHandler.AddPowerup();
+                Destroy(this.gameObject);
+            } else if (collisionEntity.tag == "Despawn") {
+                Destroy(this.gameObject);
+            }
+        }
     }
 
     // void OnTriggerExit2D(Collider2D collisionEntity) {

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,19 +29,24 @@ public class Movement : MonoBehaviour {
 
     public void Move(Vector3 vel) {
         vel *= speed;
-        vel.y = rb.velocity.y;
-        rb.velocity = vel;
 
-        if (vel.magnitude > 0) {
-            animationStateChanger?.ChangeAnimationState("Run", speed/10);
+        try {
+            vel.y = rb.velocity.y;
+            rb.velocity = vel;
 
-            if (vel.x > 0) {
-                body.localScale = new Vector3(-1, 1, 1);
-            } else if (vel.x < 0) {
-                body.localScale = new Vector3(1, 1, 1);
+            if (vel.magnitude > 0) {
+                animationStateChanger?.ChangeAnimationState("Run", speed/10);
+
+                if (vel.x > 0) {
+                    body.localScale = new Vector3(-1, 1, 1);
+                } else if (vel.x < 0) {
+                    body.localScale = new Vector3(1, 1, 1);
+                }
+            } else {
+                animationStateChanger?.ChangeAnimationState("Idle");
             }
-        } else {
-            animationStateChanger?.ChangeAnimationState("Idle");
+        } catch (Exception e) {
+            //Debug.Log("Error, player is kill: " + e);
         }
     }
 
