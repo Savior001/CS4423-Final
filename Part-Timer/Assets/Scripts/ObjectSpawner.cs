@@ -7,13 +7,21 @@ public class RandomEntitySpawner : MonoBehaviour {
     [SerializeField] GameObject damagePrefab;
     [SerializeField] GameObject powerupPrefab;
     [SerializeField] GameObject superiorPrefab;
+    [SerializeField] TimerText timerText;
     // [SerializeField] float despawnTimer = 3f;
     [SerializeField] float spawnHeigth = 3f;
     GameObject spawnChoice;
     float choice = 0f;
+    bool runCoroutine = true;
     
     void Start() {
         SpawnEntitiesOverTime();
+    }
+
+    void FixedUpdate() {
+        if (timerText.timerText.text == "10") {
+            runCoroutine = false;
+        }
     }
 
     void SpawnEntitiesOverTime() {
@@ -21,6 +29,10 @@ public class RandomEntitySpawner : MonoBehaviour {
 
         IEnumerator SpawnEntitiesOverTimeRoutine() {
             while(true) {
+                if (!runCoroutine) {
+                    yield return new WaitForSeconds(5f);
+                    runCoroutine = true;
+                }
                 choice = Random.Range(0,250);
                 // Debug.Log("Choice is: " + choice);
                 
@@ -38,6 +50,7 @@ public class RandomEntitySpawner : MonoBehaviour {
                 // Destroy(spawnObject, despawnTimer);
                 yield return null;
             }
+            yield return null;
         }
     }
 }
