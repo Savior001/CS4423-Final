@@ -11,12 +11,14 @@ public class CollisionsHandler : MonoBehaviour {
     HealthHandler healthHandler;
     PowerupHandler powerupHandler;
     CanvasFadeHandler canvasFadeHandler;
+    AnimationStateChanger animationStateChanger;
 
     void Start() {
         scoreHandler = ScoreHandler.singleton;
         healthHandler = HealthHandler.singleton;
         powerupHandler = PowerupHandler.singleton;
         canvasFadeHandler = CanvasFadeHandler.singleton;
+        animationStateChanger = AnimationStateChanger.singleton;
         // unitGetClip = Resources.Load<AudioClip>("UnitGet");
         // audioSource = GetComponent<AudioSource>();
     }
@@ -25,6 +27,13 @@ public class CollisionsHandler : MonoBehaviour {
         if (entityPrefab.tag == "Document") {
             // Debug.Log("[" + entityPrefab.tag + "] collision with " + collisionEntity.tag);
             if (collisionEntity.tag == "Player") {
+
+                if (animationStateChanger.currentState == "Idle") {
+                    animationStateChanger?.ChangeAnimationState("IdleCatch");
+                } else if (animationStateChanger.currentState == "Run") {
+                    animationStateChanger?.ChangeAnimationState("RunCatch");
+                }
+
                 scoreHandler.AddScore(150);
                 Destroy(this.gameObject);
             } else if (collisionEntity.tag == "Despawn") {

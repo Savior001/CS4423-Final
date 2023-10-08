@@ -50,7 +50,7 @@ public class RandomEntitySpawner : MonoBehaviour {
                 // Destroy(spawnObject, despawnTimer);
                 yield return null;
             }
-            yield return null;
+            // yield return null;
         }
     }
 }

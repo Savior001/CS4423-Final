@@ -4,7 +4,16 @@ using UnityEngine;
 
 public class AnimationStateChanger : MonoBehaviour {
     [SerializeField] Animator animator;
-    [SerializeField] string currentState = "Idle";
+    [SerializeField] public string currentState = "Idle";
+    public static AnimationStateChanger singleton;
+
+    void Awake() {
+        if(singleton == null) {
+            singleton = this;
+        } else {
+            Destroy(this.gameObject);
+        }
+    }
 
     void Start() {
         ChangeAnimationState(currentState);
@@ -15,6 +24,7 @@ public class AnimationStateChanger : MonoBehaviour {
     }
 
     public void ChangeAnimationState(string newAnimationState, float speed = 1) {
+        // Debug.Log("newAnimation is: " + newAnimationState);
         animator.speed = speed;
 
         if (newAnimationState == currentState) {
