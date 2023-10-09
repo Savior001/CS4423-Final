@@ -28,9 +28,9 @@ public class CollisionsHandler : MonoBehaviour {
             // Debug.Log("[" + entityPrefab.tag + "] collision with " + collisionEntity.tag);
             if (collisionEntity.tag == "Player") {
 
-                if (animationStateChanger.currentState == "Idle") {
+                if (animationStateChanger.currentAnimationState == "Idle") {
                     animationStateChanger?.ChangeAnimationState("IdleCatch");
-                } else if (animationStateChanger.currentState == "Run") {
+                } else if (animationStateChanger.currentAnimationState == "Run") {
                     animationStateChanger?.ChangeAnimationState("RunCatch");
                 }
 

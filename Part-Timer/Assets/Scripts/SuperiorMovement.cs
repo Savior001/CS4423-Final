@@ -33,6 +33,7 @@ public class SuperiorMovement : MonoBehaviour {
         runningTime = (runningTime + Time.deltaTime) * moveSpeedMultiplier;
 
         if (runningTime >= timer) {
+            if (timerText.timerText.text == "9") { return; }
             transform.position = Vector3.Lerp(transform.position, newPos, Time.deltaTime * speed);
 
             if (Vector3.Distance(transform.position, newPos) <= 0.01f) {
@@ -47,7 +48,7 @@ public class SuperiorMovement : MonoBehaviour {
         runningTime = 0f;
         xPos = 7.5f;
         newPos = new Vector3(xPos, 0, transform.position.z);
-        transform.position = Vector3.Lerp(transform.position, newPos, Time.deltaTime * 2f);
+        transform.position = Vector3.Lerp(transform.position, newPos, Time.deltaTime * speed / 3);
     }
 
     void MovementPhaseTwo() {

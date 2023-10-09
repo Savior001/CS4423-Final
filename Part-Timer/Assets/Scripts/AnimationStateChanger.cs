@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AnimationStateChanger : MonoBehaviour {
     [SerializeField] Animator animator;
-    [SerializeField] public string currentState = "Idle";
+    [SerializeField] public string currentAnimationState = "Idle";
     public static AnimationStateChanger singleton;
 
     void Awake() {
@@ -16,7 +16,7 @@ public class AnimationStateChanger : MonoBehaviour {
     }
 
     void Start() {
-        ChangeAnimationState(currentState);
+        ChangeAnimationState(currentAnimationState);
     }
 
     void Update() {
@@ -27,11 +27,15 @@ public class AnimationStateChanger : MonoBehaviour {
         // Debug.Log("newAnimation is: " + newAnimationState);
         animator.speed = speed;
 
-        if (newAnimationState == currentState) {
+        if ((currentAnimationState == "IdleCatch" || currentAnimationState == "RunCatch") &&
+            (newAnimationState == "IdleCatch" || newAnimationState == "RunCatch")) {
+            animator.SetBool("CTC", true);
+        } else if (newAnimationState == currentAnimationState) {
+            animator.SetBool("CTC", false);
             return;
         }
-
-        currentState = newAnimationState;
-        animator.Play(currentState);
+        
+        currentAnimationState = newAnimationState;
+        animator.Play(currentAnimationState);
     }
 }
