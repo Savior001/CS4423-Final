@@ -158,4 +158,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityPrefab: {fileID: 6364991461410181153}
+  superiorMovement: {fileID: -3931052766765350179, guid: 839d4f7fc06ea4a4fac922331e5ba099, type: 3}
   speed: 5

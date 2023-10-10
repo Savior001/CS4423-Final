@@ -1,25 +1,48 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ObjectMovement : MonoBehaviour {
     [SerializeField] GameObject entityPrefab;
+    [SerializeField] ObjectSpawner objectSpawner;
+    [SerializeField] PhaseText phaseText;
     [SerializeField] float speed = 2f;
     private int number = 0;
-    
-    void Update() {
-        Vector3 vel = Vector3.zero;
-        number = Random.Range(0, 1);
-        
-        vel.y = -1;
-        
-        transform.position += vel * (speed + Random.Range(1.5f, 3)) * Time.deltaTime;
+    int phase = 1;
 
-        if(entityPrefab.tag == "Damage") {
-            if(number == 0)
-                transform.Rotate(Vector3.forward);
+    void Start() {
+        phaseText = PhaseText.singleton;
+        StartCoroutine(PhaseOneMoveCoroutine());
+    }
+    
+    void FixedUpdate() {
+        phase = phaseText.phase;
+    }
+
+    IEnumerator PhaseOneMoveCoroutine() {
+        while (true) {
+            if (phase != 1) {
+                yield return new WaitForSeconds(3);
+            }
+
+            Vector3 vel = Vector3.zero;
+            number = Random.Range(0, 1);
+
+            if (pashe == 1)
+                vel.y = -1;
             else
-                transform.Rotate(Vector3.back);
+                vel.x = -1;
+
+            transform.position += vel * (speed + Random.Range(1.5f, 3)) * Time.deltaTime;
+
+            if(entityPrefab.tag == "Damage") {
+                if(number == 0)
+                    transform.Rotate(Vector3.forward);
+                else
+                    transform.Rotate(Vector3.back);
+            }
+            yield return null;
         }
     }
 }

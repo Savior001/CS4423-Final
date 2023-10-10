@@ -1,27 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class RandomEntitySpawner : MonoBehaviour {
+public class ObjectSpawner : MonoBehaviour {
     [SerializeField] GameObject documentPrefab;
     [SerializeField] GameObject damagePrefab;
     [SerializeField] GameObject powerupPrefab;
     [SerializeField] GameObject superiorPrefab;
-    [SerializeField] TimerText timerText;
-    // [SerializeField] float despawnTimer = 3f;
+    [SerializeField] PhaseText phaseText;
     [SerializeField] float spawnHeigth = 3f;
     GameObject spawnChoice;
-    float choice = 0f;
-    bool runCoroutine = true;
+    float spawnRate = 0f;
+    int phase = 1;
     
     void Start() {
         SpawnEntitiesOverTime();
     }
 
     void FixedUpdate() {
-        if (timerText.timerText.text == "10") {
-            runCoroutine = false;
-        }
+        phase = phaseText.phase;
     }
 
     void SpawnEntitiesOverTime() {
@@ -29,28 +27,48 @@ public class RandomEntitySpawner : MonoBehaviour {
 
         IEnumerator SpawnEntitiesOverTimeRoutine() {
             while(true) {
-                if (!runCoroutine) {
-                    yield return new WaitForSeconds(5f);
-                    runCoroutine = true;
+                if (phase != 1) {
+                    yield return new WaitForSeconds(3);
                 }
-                choice = Random.Range(0,250);
-                // Debug.Log("Choice is: " + choice);
-                
-                if (choice % 25 == 0) {
-                    spawnChoice = powerupPrefab;
-                } else if (choice < 125) {
-                    spawnChoice = documentPrefab;
-                } else if (choice > 124) {
-                    spawnChoice = damagePrefab;
-                }
+
+                spawnRate = Random.Range(0,250);
+                spawnChoice = GetSpawnChoice(spawnRate);
 
                 yield return new WaitForSeconds(Random.Range(0.1f, 1.5f));
                 GameObject spawnObject;
-                spawnObject = Instantiate(spawnChoice, new Vector3(superiorPrefab.transform.position.x, spawnHeigth, 0), Quaternion.identity);
-                // Destroy(spawnObject, despawnTimer);
+
+                // spawnObject = Instantiate(spawnChoice, new Vector3(superiorPrefab.transform.position.x, spawnHeigth, 0), Quaternion.identity);
+                if (phase == 1) {
+                    spawnObject = Instantiate(spawnChoice, new Vector3(superiorPrefab.transform.position.x, spawnHeigth, 0), Quaternion.identity);
+                } else {
+                    float rand = Random.Range(0f, 1f);
+                    
+                    if (rand < 0.5f)
+                        spawnHeigth -= 0.25f;
+                    else
+                        spawnHeigth -= 0.75f;
+
+                    spawnObject = Instantiate(damagePrefab, new Vector3(superiorPrefab.transform.position.x - 1, spawnHeigth, 0), Quaternion.identity);
+                }
                 yield return null;
             }
             // yield return null;
         }
+    }
+
+    private GameObject GetSpawnChoice(float spawnRate) {
+        GameObject prefab = null;
+
+        if (spawnRate % 25 == 0) {
+            prefab = powerupPrefab;
+        } else if (spawnRate < 125) {
+            prefab = documentPrefab;
+        } else if (spawnRate > 124) {
+            prefab = damagePrefab;
+        } else {
+            prefab = damagePrefab;
+        }
+
+        return prefab;
     }
 }

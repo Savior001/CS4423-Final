@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class TimerText : MonoBehaviour {
-    int seconds = 0;
+    public int seconds = 0;
     public Text timerText;
     public static TimerText singleton;
 
