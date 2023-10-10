@@ -13,18 +13,19 @@ public class ObjectMovement : MonoBehaviour {
 
     void Start() {
         phaseText = PhaseText.singleton;
-        StartCoroutine(PhaseOneMoveCoroutine());
+        phase = phaseText.phase;
+        StartCoroutine(MoveCoroutine());
+        //set velocity once
     }
     
     void Update() {
-        phase = phaseText.phase;
     }
 
-    IEnumerator PhaseOneMoveCoroutine() {
+    IEnumerator MoveCoroutine() {
         while (true) {
-            if (phase != 1) {
-                yield return new WaitForSeconds(3);
-            }
+            // if (phase != 1) {
+            //     yield return new WaitForSeconds(3);
+            // }
 
             Vector3 vel = Vector3.zero;
             number = Random.Range(0, 1);

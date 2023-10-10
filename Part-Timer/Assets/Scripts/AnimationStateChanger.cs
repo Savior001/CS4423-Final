@@ -24,8 +24,18 @@ public class AnimationStateChanger : MonoBehaviour {
     }
 
     public void ChangeAnimationState(string newAnimationState, float speed = 1) {
-        // Debug.Log("newAnimation is: " + newAnimationState);
+        
         animator.speed = speed;
+        if (newAnimationState == currentAnimationState) {
+            return;
+        }
+        Debug.Log("currentAnimation is: " + currentAnimationState);
+        Debug.Log("newAnimation is: " + newAnimationState);
+        
+        if(currentAnimationState == "RunCatch" && (newAnimationState == "Idle" || newAnimationState == "Run")) {
+            Debug.Log("something");
+            return;
+        }
 
         if ((currentAnimationState == "IdleCatch" || currentAnimationState == "RunCatch") &&
             (newAnimationState == "IdleCatch" || newAnimationState == "RunCatch")) {

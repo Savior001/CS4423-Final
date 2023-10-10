@@ -2509,6 +2509,10 @@ PrefabInstance:
       propertyPath: timerText
       value: 
       objectReference: {fileID: 1485417817}
+    - target: {fileID: -404110734952141438, guid: 839d4f7fc06ea4a4fac922331e5ba099, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1165166787553689312, guid: 839d4f7fc06ea4a4fac922331e5ba099, type: 3}
       propertyPath: m_Name
       value: Superior
@@ -2788,6 +2792,10 @@ PrefabInstance:
     - target: {fileID: -1844867989858578133, guid: e194e81a9c7cdca4cb2afa97ffeca799, type: 3}
       propertyPath: health
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2450031341738177655, guid: e194e81a9c7cdca4cb2afa97ffeca799, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3941577438751496148, guid: e194e81a9c7cdca4cb2afa97ffeca799, type: 3}
       propertyPath: m_Name

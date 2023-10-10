@@ -7,7 +7,7 @@ public class ObjectSpawner : MonoBehaviour {
     [SerializeField] GameObject documentPrefab;
     [SerializeField] GameObject damagePrefab;
     [SerializeField] GameObject powerupPrefab;
-    [SerializeField] GameObject superiorPrefab;
+    [SerializeField] GameObject superiorPrefab; //object only use prefab if its reference from project
     [SerializeField] PhaseText phaseText;
     [SerializeField] float spawnHeigth = 3f;
     GameObject spawnChoice;
@@ -27,9 +27,9 @@ public class ObjectSpawner : MonoBehaviour {
 
         IEnumerator SpawnEntitiesOverTimeRoutine() {
             while(true) {
-                if (phase != 1) {
-                    yield return new WaitForSeconds(3);
-                }
+                // if (phase != 1) {
+                //     yield return new WaitForSeconds(3);
+                // }
 
                 spawnRate = Random.Range(0,250);
                 spawnChoice = GetSpawnChoice(spawnRate);
@@ -48,7 +48,7 @@ public class ObjectSpawner : MonoBehaviour {
                     else
                         spawnHeigth -= 0.75f;
 
-                    spawnObject = Instantiate(damagePrefab, new Vector3(superiorPrefab.transform.position.x - 1, spawnHeigth, 0), Quaternion.identity);
+                    spawnObject = Instantiate(damagePrefab, superiorPrefab.transform.position, Quaternion.identity);
                 }
                 yield return null;
             }
