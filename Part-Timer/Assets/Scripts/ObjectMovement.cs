@@ -16,7 +16,7 @@ public class ObjectMovement : MonoBehaviour {
         StartCoroutine(PhaseOneMoveCoroutine());
     }
     
-    void FixedUpdate() {
+    void Update() {
         phase = phaseText.phase;
     }
 
@@ -29,7 +29,7 @@ public class ObjectMovement : MonoBehaviour {
             Vector3 vel = Vector3.zero;
             number = Random.Range(0, 1);
 
-            if (pashe == 1)
+            if (phase == 1)
                 vel.y = -1;
             else
                 vel.x = -1;
