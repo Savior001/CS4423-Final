@@ -47,8 +47,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c91e498fef39cdb45af6460093cf0508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  speed: 10
+  health: 30
+  speed: 6
   jumpForce: 25
   wallSlideModifier: 1.5
   groundDistance: 0.5
@@ -60,7 +60,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   body: {fileID: 5706875961266799393}
-  animationStateChanger: {fileID: 2450031341738177655}
+  animator: {fileID: 1853908994246517715}
 --- !u!50 &6852460330931230514
 Rigidbody2D:
   serializedVersion: 4
@@ -144,7 +144,6 @@ GameObject:
   - component: {fileID: 5706875961266799393}
   - component: {fileID: 4874683722536965160}
   - component: {fileID: 1853908994246517715}
-  - component: {fileID: 2450031341738177655}
   m_Layer: 0
   m_Name: PlayerBody
   m_TagString: Untagged
@@ -241,20 +240,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2450031341738177655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6272776373138934652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a6e2a8c8270f934d9522ac00bff7431, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 1853908994246517715}
-  currentState: Idle
 --- !u!1001 &93529773848691754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -264,17 +249,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 5706875961266799393}
     m_Modifications:
     - target: {fileID: 5270699360229267773, guid: 109f95cdeb5dbe742bc805f17238ca6e, type: 3}
-      propertyPath: entityPrefab
-      value: 
-      objectReference: {fileID: 3941577438751496148}
-    - target: {fileID: 5270699360229267773, guid: 109f95cdeb5dbe742bc805f17238ca6e, type: 3}
       propertyPath: playerMovement
       value: 
       objectReference: {fileID: -1844867989858578133}
-    - target: {fileID: 7416186872864012030, guid: 109f95cdeb5dbe742bc805f17238ca6e, type: 3}
-      propertyPath: m_LocalScale.z
-      value: -1
-      objectReference: {fileID: 0}
     - target: {fileID: 7416186872864012030, guid: 109f95cdeb5dbe742bc805f17238ca6e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.375
@@ -314,10 +291,6 @@ PrefabInstance:
     - target: {fileID: 7416186872864012030, guid: 109f95cdeb5dbe742bc805f17238ca6e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -42
-      objectReference: {fileID: 0}
-    - target: {fileID: 7416186872864012030, guid: 109f95cdeb5dbe742bc805f17238ca6e, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7753584801271528227, guid: 109f95cdeb5dbe742bc805f17238ca6e, type: 3}
       propertyPath: m_Name

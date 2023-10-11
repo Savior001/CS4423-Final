@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Movement : MonoBehaviour {
     [SerializeField] float health = 100f;
@@ -13,16 +14,22 @@ public class Movement : MonoBehaviour {
     [SerializeField] LayerMask groundMask;
     [SerializeField] LayerMask wallWask;
     [SerializeField] Transform body;
-    [SerializeField] AnimationStateChanger animationStateChanger;
     Rigidbody2D rb;
     HealthHandler healthHandler;
     PowerupHandler powerupHandler;
     private bool onGround;
     private bool onWall;
     private bool wallSlide => onWall && !onGround && rb.velocity.y < 0f;
+    public UnityEvent OnLandEvent;
+    public Animator animator;
 
     void Awake() {
         rb = GetComponent<Rigidbody2D>();
+
+        if (OnLandEvent == null) {
+			OnLandEvent = new UnityEvent();
+        }
+
         healthHandler = HealthHandler.singleton;
         powerupHandler = PowerupHandler.singleton;
         healthHandler.hp = health;
@@ -34,11 +41,17 @@ public class Movement : MonoBehaviour {
 
     void FixedUpdate() {
         var newSpeed = powerupHandler.playerSpeed;
+        bool wasGrounded = onGround;
+
         CheckCollisions();
         if (wallSlide) WallSlide();
         if (speed < newSpeed) {
             speed = newSpeed;
             Debug.Log("new speed: " + speed);
+        }
+        animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
+        if (!wasGrounded) {
+            OnLandEvent.Invoke();
         }
     }
 
@@ -50,15 +63,11 @@ public class Movement : MonoBehaviour {
             rb.velocity = vel;
 
             if (vel.magnitude > 0) {
-                animationStateChanger?.ChangeAnimationState("Run", speed/10);
-
                 if (vel.x > 0) {
                     body.localScale = new Vector3(-1, 1, 1);
                 } else if (vel.x < 0) {
                     body.localScale = new Vector3(1, 1, 1);
                 }
-            } else {
-                animationStateChanger?.ChangeAnimationState("Idle");
             }
         } catch (Exception e) {
             //Debug.Log("Error, player is kill: " + e);
@@ -67,18 +76,22 @@ public class Movement : MonoBehaviour {
 
     public void Stop(float xvel = 0) {
         rb.velocity = new Vector3(xvel, rb.velocity.y, 0);
-        animationStateChanger?.ChangeAnimationState("Idle");
     }
 
     public void Jump() {
         if (onGround) {
             rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode2D.Impulse);
+            animator.SetBool("IsJumping", true);
         }
         // if (Physics2D.OverlapCircleAll(transform.position - new Vector3(0, 0.5f, 0), groundDistance, groundMask).Length > 0) {
         //     rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode2D.Impulse);
         // } else {
         //     Debug.Log("Can't jump!\nOverlap with ground is: " + Physics2D.OverlapCircleAll(transform.position - new Vector3(0, 0.5f, 0), groundDistance, groundMask).Length + " which is not > 0");
         // }
+    }
+
+    public void OnLanding() {
+        animator.SetBool("IsJumping", false);
     }
 
     public void WallSlide() {
