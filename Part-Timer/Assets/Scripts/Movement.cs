@@ -38,12 +38,25 @@ public class Movement : MonoBehaviour {
         var newSpeed = powerupHandler.playerSpeed;
 
         CheckCollisions();
+        if (onGround) {
+            animator.SetBool("IsFalling", false);
+        } else {
+            if (rb.velocity.y <= 0) {
+                animator.SetBool("IsJumping", false);
+                animator.SetBool("IsFalling", true);
+            }
+            Debug.Log("current y vel: " + rb.velocity.y);
+        }
 
-        if (onGround) { animator.SetBool("IsJumping", false); }
         if (wallSlide) { WallSlide(); }
         if (speed < newSpeed) {
             speed = newSpeed;
             Debug.Log("new speed: " + speed);
+        }
+
+        if (!onGround && rb.velocity.y <= 0) {
+            animator.SetBool("IsJumping", false);
+            animator.SetBool("IsFalling", true);
         }
         animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
     }
@@ -78,7 +91,6 @@ public class Movement : MonoBehaviour {
         if (onGround) {
             rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode2D.Impulse);
             animator.SetBool("IsJumping", true);
-            Debug.Log("Jumped, setting [IsJumping] to: " + true);
         }
         // if (Physics2D.OverlapCircleAll(transform.position - new Vector3(0, 0.5f, 0), groundDistance, groundMask).Length > 0) {
         //     rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode2D.Impulse);
