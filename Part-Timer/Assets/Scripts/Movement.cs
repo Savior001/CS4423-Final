@@ -18,6 +18,7 @@ public class Movement : MonoBehaviour {
     PowerupHandler powerupHandler;
     private bool onWall;
     private bool wallSlide => onWall && !onGround && rb.velocity.y < 0f;
+    private int debugCount = 0;
     public bool onGround = true;
     public Animator animator;
 
@@ -37,7 +38,9 @@ public class Movement : MonoBehaviour {
         var newSpeed = powerupHandler.playerSpeed;
 
         CheckCollisions();
-        if (wallSlide) WallSlide();
+
+        if (onGround) { animator.SetBool("IsJumping", false); }
+        if (wallSlide) { WallSlide(); }
         if (speed < newSpeed) {
             speed = newSpeed;
             Debug.Log("new speed: " + speed);
@@ -60,7 +63,10 @@ public class Movement : MonoBehaviour {
                 }
             }
         } catch (Exception e) {
-            //Debug.Log("Error, player is kill: " + e);
+            if (debugCount == 0) {
+                Debug.Log("Error on Move(Vector3 call), player is kill: " + e);
+                debugCount += 1;
+            }
         }
     }
 
@@ -79,11 +85,6 @@ public class Movement : MonoBehaviour {
         // } else {
         //     Debug.Log("Can't jump!\nOverlap with ground is: " + Physics2D.OverlapCircleAll(transform.position - new Vector3(0, 0.5f, 0), groundDistance, groundMask).Length + " which is not > 0");
         // }
-    }
-
-    public void OnLanding() {
-        animator.SetBool("IsJumping", false);
-        Debug.Log("Landed, setting [IsJumping] to: " + false);
     }
 
     public void WallSlide() {

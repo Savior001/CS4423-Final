@@ -2,26 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class PlayerInputHandler : MonoBehaviour {
     [SerializeField] Movement movement;
     [SerializeField] FallingPapersEffect fpe;
-    public UnityEvent OnLandEvent;
-
-    void Awake() {
-        if (OnLandEvent == null) {
-			OnLandEvent = new UnityEvent();
-        }
-    }
+    private int debugCount = 0;
 
     void Update() {
-        bool wasGrounded = movement.onGround;
-        
-        if (!wasGrounded) {
-            OnLandEvent.Invoke();
-        }
-
         try {
             if (Input.GetKey(KeyCode.A)) {
                 movement.Move(new Vector3(-1, 0, 0));
@@ -36,7 +23,10 @@ public class PlayerInputHandler : MonoBehaviour {
 
             if (Input.GetKeyDown(KeyCode.Space)) { movement.Jump(); }
         } catch (Exception e) {
-            //Debug.Log("Player is kill: " + e);
+            if (debugCount == 0) {
+                Debug.Log("Error on Update() call, player is kill: " + e);
+                debugCount += 1;
+            }
         }
     }
 }
