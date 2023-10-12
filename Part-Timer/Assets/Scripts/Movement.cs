@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class Movement : MonoBehaviour {
     [SerializeField] float health = 100f;
@@ -17,18 +16,13 @@ public class Movement : MonoBehaviour {
     Rigidbody2D rb;
     HealthHandler healthHandler;
     PowerupHandler powerupHandler;
-    private bool onGround;
     private bool onWall;
     private bool wallSlide => onWall && !onGround && rb.velocity.y < 0f;
-    public UnityEvent OnLandEvent;
+    public bool onGround = true;
     public Animator animator;
 
     void Awake() {
         rb = GetComponent<Rigidbody2D>();
-
-        if (OnLandEvent == null) {
-			OnLandEvent = new UnityEvent();
-        }
 
         healthHandler = HealthHandler.singleton;
         powerupHandler = PowerupHandler.singleton;
@@ -41,7 +35,6 @@ public class Movement : MonoBehaviour {
 
     void FixedUpdate() {
         var newSpeed = powerupHandler.playerSpeed;
-        bool wasGrounded = onGround;
 
         CheckCollisions();
         if (wallSlide) WallSlide();
@@ -50,9 +43,6 @@ public class Movement : MonoBehaviour {
             Debug.Log("new speed: " + speed);
         }
         animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
-        if (!wasGrounded) {
-            OnLandEvent.Invoke();
-        }
     }
 
     public void Move(Vector3 vel) {
@@ -82,6 +72,7 @@ public class Movement : MonoBehaviour {
         if (onGround) {
             rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode2D.Impulse);
             animator.SetBool("IsJumping", true);
+            Debug.Log("Jumped, setting [IsJumping] to: " + true);
         }
         // if (Physics2D.OverlapCircleAll(transform.position - new Vector3(0, 0.5f, 0), groundDistance, groundMask).Length > 0) {
         //     rb.AddForce(new Vector3(0, jumpForce, 0), ForceMode2D.Impulse);
@@ -92,6 +83,7 @@ public class Movement : MonoBehaviour {
 
     public void OnLanding() {
         animator.SetBool("IsJumping", false);
+        Debug.Log("Landed, setting [IsJumping] to: " + false);
     }
 
     public void WallSlide() {

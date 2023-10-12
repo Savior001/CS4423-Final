@@ -250,8 +250,8 @@ Transform:
   m_GameObject: {fileID: 232090795}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.625, y: 0, z: 0}
-  m_LocalScale: {x: 8, y: 160, z: 0}
+  m_LocalPosition: {x: -11.2813, y: 0, z: 0}
+  m_LocalScale: {x: 60, y: 160, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1791469919}
@@ -1167,8 +1167,8 @@ Transform:
   m_GameObject: {fileID: 767848319}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.75, y: 0, z: 0}
-  m_LocalScale: {x: 8, y: 160, z: 0}
+  m_LocalPosition: {x: 11.25, y: 0, z: 0}
+  m_LocalScale: {x: 60, y: 160, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1791469919}
@@ -1646,6 +1646,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: {fileID: 7576550466917981128}
   fpe: {fileID: 1413058544}
+  OnLandEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7576550466917981128}
+        m_TargetAssemblyTypeName: Movement, Assembly-CSharp
+        m_MethodName: OnLanding
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1317163710
 Transform:
   m_ObjectHideFlags: 0
@@ -2697,6 +2712,18 @@ PrefabInstance:
     - target: {fileID: 5037909992664542764, guid: 180137cd300bc5247b74e22dc1ea0e0d, type: 3}
       propertyPath: m_Color.r
       value: 0.6981132
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788887566849316888, guid: 180137cd300bc5247b74e22dc1ea0e0d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 420
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788887566849316888, guid: 180137cd300bc5247b74e22dc1ea0e0d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788887566849316888, guid: 180137cd300bc5247b74e22dc1ea0e0d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.5
       objectReference: {fileID: 0}
     - target: {fileID: 8610698373454611725, guid: 180137cd300bc5247b74e22dc1ea0e0d, type: 3}
       propertyPath: m_TagString
