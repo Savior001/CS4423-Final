@@ -45,7 +45,7 @@ public class Movement : MonoBehaviour {
                 animator.SetBool("IsJumping", false);
                 animator.SetBool("IsFalling", true);
             }
-            Debug.Log("current y vel: " + rb.velocity.y);
+            // Debug.Log("current y vel: " + rb.velocity.y);
         }
 
         if (wallSlide) { WallSlide(); }
