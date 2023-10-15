@@ -35,7 +35,14 @@ public class CollisionsHandler : MonoBehaviour {
         healthHandler = HealthHandler.singleton;
         powerupHandler = PowerupHandler.singleton;
         canvasFadeHandler = CanvasFadeHandler.singleton;
-        animator = playerBody.GetComponent<Animator>();
+        try {
+            animator = playerBody.GetComponent<Animator>();
+        } catch (Exception e) {
+            if (debugCount == 0) {
+                Debug.Log("Error on Start(), player is kill: " + e);
+                debugCount += 1;
+            }
+        }
         // unitGetClip = Resources.Load<AudioClip>("UnitGet");
         // audioSource = GetComponent<AudioSource>();
     }

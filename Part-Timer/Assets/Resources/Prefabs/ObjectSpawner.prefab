@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   documentPrefab: {fileID: 3369850811086130620, guid: 83da2ea88fe29f846a6894e2d43e1929, type: 3}
-  damagePrefab: {fileID: 7161776525189735613, guid: 4160b00bdcb1434498f167efcfa08a77, type: 3}
+  damagePrefab: {fileID: 3970503044240154153, guid: 3fcd585ad2c7542e9a00744d7ce15e27, type: 3}
   powerupPrefab: {fileID: 3031002038922325651, guid: ee630576a3a164940a36c12575c1e741, type: 3}
-  superiorPrefab: {fileID: 1165166787553689312, guid: 839d4f7fc06ea4a4fac922331e5ba099, type: 3}
+  superiorObject: {fileID: 0}
   phaseText: {fileID: 0}
   spawnHeigth: 3

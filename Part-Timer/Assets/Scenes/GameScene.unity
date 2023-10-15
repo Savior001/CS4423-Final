@@ -2501,26 +2501,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -3931052766765350179, guid: 839d4f7fc06ea4a4fac922331e5ba099, type: 3}
-      propertyPath: phaseText
-      value: 
-      objectReference: {fileID: 1870774787}
-    - target: {fileID: -3931052766765350179, guid: 839d4f7fc06ea4a4fac922331e5ba099, type: 3}
-      propertyPath: timerText
-      value: 
-      objectReference: {fileID: 1485417817}
-    - target: {fileID: -404110734952141438, guid: 839d4f7fc06ea4a4fac922331e5ba099, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1165166787553689312, guid: 839d4f7fc06ea4a4fac922331e5ba099, type: 3}
       propertyPath: m_Name
       value: Superior
       objectReference: {fileID: 0}
-    - target: {fileID: 2482778415832336800, guid: 839d4f7fc06ea4a4fac922331e5ba099, type: 3}
-      propertyPath: phaseText
-      value: 
-      objectReference: {fileID: 1870774787}
     - target: {fileID: 6518139108258336127, guid: 839d4f7fc06ea4a4fac922331e5ba099, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

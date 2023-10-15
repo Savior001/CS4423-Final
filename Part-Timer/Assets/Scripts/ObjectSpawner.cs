@@ -7,19 +7,13 @@ public class ObjectSpawner : MonoBehaviour {
     [SerializeField] GameObject documentPrefab;
     [SerializeField] GameObject damagePrefab;
     [SerializeField] GameObject powerupPrefab;
-    [SerializeField] GameObject superiorPrefab; //object only use prefab if its reference from project
-    [SerializeField] PhaseText phaseText;
+    [SerializeField] GameObject superiorObject;
     [SerializeField] float spawnHeigth = 3f;
     GameObject spawnChoice;
     float spawnRate = 0f;
-    int phase = 1;
     
     void Start() {
         SpawnEntitiesOverTime();
-    }
-
-    void FixedUpdate() {
-        phase = phaseText.phase;
     }
 
     void SpawnEntitiesOverTime() {
@@ -37,9 +31,9 @@ public class ObjectSpawner : MonoBehaviour {
                 yield return new WaitForSeconds(Random.Range(0.1f, 1.5f));
                 GameObject spawnObject;
 
-                // spawnObject = Instantiate(spawnChoice, new Vector3(superiorPrefab.transform.position.x, spawnHeigth, 0), Quaternion.identity);
-                if (phase == 1) {
-                    spawnObject = Instantiate(spawnChoice, new Vector3(superiorPrefab.transform.position.x, spawnHeigth, 0), Quaternion.identity);
+                // spawnObject = Instantiate(spawnChoice, new Vector3(superiorObject.transform.position.x, spawnHeigth, 0), Quaternion.identity);
+                if (superiorObject.GetComponent<SuperiorMovement>().phase == 1) {
+                    spawnObject = Instantiate(spawnChoice, new Vector3(superiorObject.transform.position.x, spawnHeigth, 0), Quaternion.identity);
                 } else {
                     float rand = Random.Range(0f, 1f);
                     
@@ -48,7 +42,7 @@ public class ObjectSpawner : MonoBehaviour {
                     else
                         spawnHeigth -= 0.75f;
 
-                    spawnObject = Instantiate(damagePrefab, superiorPrefab.transform.position, Quaternion.identity);
+                    spawnObject = Instantiate(damagePrefab, superiorObject.transform.position, Quaternion.identity);
                 }
                 yield return null;
             }

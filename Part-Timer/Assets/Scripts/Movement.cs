@@ -21,6 +21,11 @@ public class Movement : MonoBehaviour {
     private int debugCount = 0;
     public bool onGround = true;
     public Animator animator;
+    AnimatorClipInfo[] animatorClipInfo;
+    string animatorClipName = "";
+    string previousClipName = null;
+    float animatorClipLength;
+    float animatorClipTime;
 
     void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -35,6 +40,20 @@ public class Movement : MonoBehaviour {
     }
 
     void FixedUpdate() {
+        previousClipName = animatorClipName;
+        animatorClipInfo = animator.GetCurrentAnimatorClipInfo(0);
+        animatorClipName = animatorClipInfo[0].clip.name;
+        animatorClipLength = animatorClipInfo[0].clip.length;
+        animatorClipTime = animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+
+        if (animatorClipName != null && animatorClipName.Contains("Catch") && previousClipName != animatorClipName) {
+            if (rb.velocity.magnitude > 0) {
+                animator.Play("RunCatch", 0, animatorClipTime);
+                Debug.Log("Playing a animation: " + animatorClipName +
+                    "\nat normailzedTime of: " + animatorClipTime);
+            }
+        }
+
         var newSpeed = powerupHandler.playerSpeed;
 
         CheckCollisions();
