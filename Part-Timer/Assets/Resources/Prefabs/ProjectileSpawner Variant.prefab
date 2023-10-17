@@ -13,12 +13,20 @@ PrefabInstance:
       value: ProjectileSpawner Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8600998273435710999, guid: 8eda69f82feddbd47aa694e817346995, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.041666657
+      objectReference: {fileID: 0}
+    - target: {fileID: 8600998273435710999, guid: 8eda69f82feddbd47aa694e817346995, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.041666657
+      objectReference: {fileID: 0}
+    - target: {fileID: 8600998273435710999, guid: 8eda69f82feddbd47aa694e817346995, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.132
       objectReference: {fileID: 0}
     - target: {fileID: 8600998273435710999, guid: 8eda69f82feddbd47aa694e817346995, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.547
       objectReference: {fileID: 0}
     - target: {fileID: 8600998273435710999, guid: 8eda69f82feddbd47aa694e817346995, type: 3}
       propertyPath: m_LocalPosition.z
@@ -30,15 +38,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8600998273435710999, guid: 8eda69f82feddbd47aa694e817346995, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8600998273435710999, guid: 8eda69f82feddbd47aa694e817346995, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8600998273435710999, guid: 8eda69f82feddbd47aa694e817346995, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8600998273435710999, guid: 8eda69f82feddbd47aa694e817346995, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -80,3 +88,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 7526774284997411547, guid: 48003619a01fe4af68ff008b12fe2508, type: 3}
   weaponObject: {fileID: 0}
+  power: 1
+  speed: 10

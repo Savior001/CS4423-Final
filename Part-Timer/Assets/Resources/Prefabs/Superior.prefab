@@ -100,12 +100,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28fa4449df7bea14ea8beae4b9b88860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 100
   speed: 2
   xPos: 0
   timer: 1
   moveSpeedMultiplier: 1
-  timerText: {fileID: 0}
-  phaseText: {fileID: 0}
+  timerStop: 30
+  phase: 1
 --- !u!50 &-6065386978890630791
 Rigidbody2D:
   serializedVersion: 4

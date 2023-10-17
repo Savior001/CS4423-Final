@@ -8,6 +8,8 @@ public class CollisionsHandler : MonoBehaviour {
     [SerializeField] GameObject entityPrefab;
     GameObject playerObject;
     GameObject playerBody;
+    
+    ProjectileSpawner projectileSpawner;
     // [SerializeField] AudioClip unitGetClip;
     // AudioSource audioSource;
     ScoreHandler scoreHandler;
@@ -16,11 +18,13 @@ public class CollisionsHandler : MonoBehaviour {
     CanvasFadeHandler canvasFadeHandler;
     Animator animator;
     private int debugCount = 0;
+    float damage = 0;
 
     void Awake() {
         try {
             playerObject = GameObject.FindWithTag("Player");
             playerBody = playerObject.transform.GetChild(0).gameObject;
+            projectileSpawner = playerBody.transform.GetChild(1).transform.GetChild(0).GetComponent<ProjectileSpawner>();
             // animator = GetComponent<Animator>();
         } catch (Exception e) {
             if (debugCount == 0) {
@@ -93,14 +97,16 @@ public class CollisionsHandler : MonoBehaviour {
 
             if (entityPrefab.tag == "Projectile") {
                 // Debug.Log("[" + entityPrefab.tag + "] collision with " + collisionEntity.tag);
+                // entityPrefab.transform.rotation = projectileSpawner.transform.rotation;
                 if (collisionEntity.tag == "Superior") {
-                    Debug.Log("Boss should take damage.");
-
-                    // if (healthHandler.hp == 0) {
-                    //     Debug.Log("You ded...");
-                    //     canvasFadeHandler.FadeIn();
-                    //     Destroy(collisionEntity.gameObject);
-                    // }
+                    SuperiorMovement superiorObject = collisionEntity.gameObject.GetComponent<SuperiorMovement>();
+                    damage = projectileSpawner.power;
+                    
+                    superiorObject.DealDamage(damage);
+                    Debug.Log("Boss lost [" + damage + "] hp. \nBoss at [" + superiorObject.health + "] hp.");
+                    if (superiorObject.health == 0) {
+                        Destroy(collisionEntity.gameObject);
+                    }
 
                     // scoreHandler.DeductScore(50);
                     Destroy(this.gameObject);

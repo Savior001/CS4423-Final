@@ -17,6 +17,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 300652569391513807, guid: 8eda69f82feddbd47aa694e817346995, type: 3}
     - target: {fileID: -9104235592583603724, guid: 3683970f8e4a9544bba06591bc55ac98, type: 3}
+      propertyPath: superiorObject
+      value: 
+      objectReference: {fileID: 8093325500202738215, guid: 839d4f7fc06ea4a4fac922331e5ba099, type: 3}
+    - target: {fileID: -9104235592583603724, guid: 3683970f8e4a9544bba06591bc55ac98, type: 3}
       propertyPath: superiorPrefab
       value: 
       objectReference: {fileID: 1165166787553689312, guid: 839d4f7fc06ea4a4fac922331e5ba099, type: 3}

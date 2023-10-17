@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &8020613491141709320
+--- !u!1001 &5104184338088805842
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,6 +8,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -9104235592583603724, guid: 3683970f8e4a9544bba06591bc55ac98, type: 3}
+      propertyPath: timerStop
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: -9104235592583603724, guid: 3683970f8e4a9544bba06591bc55ac98, type: 3}
+      propertyPath: objectSpawner
+      value: 
+      objectReference: {fileID: 300652569391513807, guid: 8eda69f82feddbd47aa694e817346995, type: 3}
+    - target: {fileID: -9104235592583603724, guid: 3683970f8e4a9544bba06591bc55ac98, type: 3}
+      propertyPath: superiorObject
+      value: 
+      objectReference: {fileID: 8093325500202738215, guid: 839d4f7fc06ea4a4fac922331e5ba099, type: 3}
     - target: {fileID: 1050840311369132672, guid: 3683970f8e4a9544bba06591bc55ac98, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -50,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6364991461410181153, guid: 3683970f8e4a9544bba06591bc55ac98, type: 3}
       propertyPath: m_Name
-      value: DamageObject Variant 1
+      value: DamageObject Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6364991461410181153, guid: 3683970f8e4a9544bba06591bc55ac98, type: 3}
       propertyPath: m_TagString
@@ -58,11 +70,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7857130116802382126, guid: 3683970f8e4a9544bba06591bc55ac98, type: 3}
       propertyPath: m_Color.b
-      value: 0.28773582
+      value: 0.28627452
       objectReference: {fileID: 0}
     - target: {fileID: 7857130116802382126, guid: 3683970f8e4a9544bba06591bc55ac98, type: 3}
       propertyPath: m_Color.g
-      value: 0.3135118
+      value: 0.3137255
       objectReference: {fileID: 0}
     - target: {fileID: 7857130116802382126, guid: 3683970f8e4a9544bba06591bc55ac98, type: 3}
       propertyPath: m_Color.r

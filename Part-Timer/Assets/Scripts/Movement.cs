@@ -126,4 +126,10 @@ public class Movement : MonoBehaviour {
         onGround = Physics2D.OverlapCircleAll(transform.position - new Vector3(0, 0.5f, 0), groundDistance, groundMask).Length > 0;
         onWall = Physics2D.OverlapCircleAll(transform.position - new Vector3(0, 0.5f, 0), wallDistance, wallWask).Length > 0;
     }
+
+    // used to draw collisions check wire frame
+    void OnDrawGizmos() {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position - new Vector3(0, .5f, 0), groundDistance);
+    }
 }

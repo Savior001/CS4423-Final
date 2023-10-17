@@ -11,6 +11,7 @@ TagManager:
   - Powerup
   - GameOverButtons
   - Projectile
+  - PlayerShoot
   layers:
   - Default
   - TransparentFX

@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class SuperiorMovement : MonoBehaviour {
+    [SerializeField] public float health = 100f;
     [SerializeField] float speed = 2f;
     [SerializeField] float xPos;
     [SerializeField] float timer = 0f;
     [SerializeField] float moveSpeedMultiplier = 1f;
+    [SerializeField] public int timerStop = 10;
     Vector3 newPos;
     float runningTime = 0f;
     bool updatePhase = true;
@@ -29,7 +31,7 @@ public class SuperiorMovement : MonoBehaviour {
 
     void FixedUpdate() {
         runningTime = (runningTime + Time.deltaTime) * moveSpeedMultiplier;
-        if (timer > 10) { phase = 2; }
+        if (timer > timerStop) { phase = 2; }
 
         if (phase == 1) {
             Movement();
@@ -83,5 +85,9 @@ public class SuperiorMovement : MonoBehaviour {
                 runningTime = 0f;
             }
         }
+    }
+
+    public void DealDamage(float damage) {
+        health -= damage;
     }
 }

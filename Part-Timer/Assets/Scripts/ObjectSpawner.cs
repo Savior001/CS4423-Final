@@ -7,15 +7,20 @@ public class ObjectSpawner : MonoBehaviour {
     [SerializeField] GameObject documentPrefab;
     [SerializeField] GameObject damagePrefab;
     [SerializeField] GameObject powerupPrefab;
-    [SerializeField] GameObject superiorObject;
+    [SerializeField] SuperiorMovement superiorObject;
     [SerializeField] float spawnHeigth = 3f;
     GameObject spawnChoice;
     float spawnRate = 0f;
+    public int phase = 1;
     
     void Start() {
         SpawnEntitiesOverTime();
     }
 
+    void Update() {
+        phase = superiorObject.phase;
+    }
+    
     void SpawnEntitiesOverTime() {
         StartCoroutine(SpawnEntitiesOverTimeRoutine());
 
@@ -32,17 +37,17 @@ public class ObjectSpawner : MonoBehaviour {
                 GameObject spawnObject;
 
                 // spawnObject = Instantiate(spawnChoice, new Vector3(superiorObject.transform.position.x, spawnHeigth, 0), Quaternion.identity);
-                if (superiorObject.GetComponent<SuperiorMovement>().phase == 1) {
+                if (phase == 1) {
                     spawnObject = Instantiate(spawnChoice, new Vector3(superiorObject.transform.position.x, spawnHeigth, 0), Quaternion.identity);
                 } else {
                     float rand = Random.Range(0f, 1f);
                     
                     if (rand < 0.5f)
-                        spawnHeigth -= 0.25f;
+                        spawnHeigth = 2f;
                     else
-                        spawnHeigth -= 0.75f;
+                        spawnHeigth = 4f;
 
-                    spawnObject = Instantiate(damagePrefab, superiorObject.transform.position, Quaternion.identity);
+                    spawnObject = Instantiate(damagePrefab, new Vector3(superiorObject.transform.position.x, superiorObject.transform.position.y - spawnHeigth, 0), Quaternion.identity);
                 }
                 yield return null;
             }

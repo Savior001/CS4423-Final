@@ -71,7 +71,7 @@ PrefabInstance:
     - target: {fileID: 7857130116802382126, guid: 3683970f8e4a9544bba06591bc55ac98, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 684586634, guid: ff26420cecc704c04ae2383e4e79d426, type: 3}
+      objectReference: {fileID: -1344258583, guid: ddcf19aa8476d414b8c5660a44ed6c0d, type: 3}
     - target: {fileID: 7857130116802382126, guid: 3683970f8e4a9544bba06591bc55ac98, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -124,7 +124,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
