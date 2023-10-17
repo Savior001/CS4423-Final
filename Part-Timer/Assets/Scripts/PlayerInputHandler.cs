@@ -6,6 +6,7 @@ using UnityEngine;
 public class PlayerInputHandler : MonoBehaviour {
     [SerializeField] Movement movement;
     [SerializeField] FallingPapersEffect fpe;
+    [SerializeField] ProjectileSpawner projectileSpawner;
     private int debugCount = 0;
 
     void Update() {
@@ -21,7 +22,13 @@ public class PlayerInputHandler : MonoBehaviour {
                 fpe.ActivateEffect(Vector3.zero);
             }
 
-            if (Input.GetKeyDown(KeyCode.Space)) { movement.Jump(); }
+            if (Input.GetKeyDown(KeyCode.Space)) {
+                movement.Jump();
+            }
+
+            if (Input.GetMouseButtonDown(0)) {
+                projectileSpawner.SpawnProjectile(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+            }
         } catch (Exception e) {
             if (debugCount == 0) {
                 Debug.Log("Error on Update() call, player is kill: " + e);

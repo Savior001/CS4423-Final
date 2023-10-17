@@ -62,7 +62,7 @@ public class CollisionsHandler : MonoBehaviour {
                 }
             }
 
-            if(entityPrefab.tag == "Damage") {
+            if (entityPrefab.tag == "Damage") {
                 // Debug.Log("[" + entityPrefab.tag + "] collision with " + collisionEntity.tag);
                 if (collisionEntity.tag == "Player") {
                     healthHandler.DealDamage(10);
@@ -85,6 +85,24 @@ public class CollisionsHandler : MonoBehaviour {
                 if (collisionEntity.tag == "Player") {
                     // add powerup count or signify type of powerup
                     powerupHandler.AddPowerup();
+                    Destroy(this.gameObject);
+                } else if (collisionEntity.tag == "Despawn") {
+                    Destroy(this.gameObject);
+                }
+            }
+
+            if (entityPrefab.tag == "Projectile") {
+                // Debug.Log("[" + entityPrefab.tag + "] collision with " + collisionEntity.tag);
+                if (collisionEntity.tag == "Superior") {
+                    Debug.Log("Boss should take damage.");
+
+                    // if (healthHandler.hp == 0) {
+                    //     Debug.Log("You ded...");
+                    //     canvasFadeHandler.FadeIn();
+                    //     Destroy(collisionEntity.gameObject);
+                    // }
+
+                    // scoreHandler.DeductScore(50);
                     Destroy(this.gameObject);
                 } else if (collisionEntity.tag == "Despawn") {
                     Destroy(this.gameObject);
