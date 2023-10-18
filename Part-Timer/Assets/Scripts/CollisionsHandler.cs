@@ -105,6 +105,8 @@ public class CollisionsHandler : MonoBehaviour {
                     superiorObject.DealDamage(damage);
                     Debug.Log("Boss lost [" + damage + "] hp. \nBoss at [" + superiorObject.health + "] hp.");
                     if (superiorObject.health == 0) {
+                        Debug.Log("A winner is you!");
+                        canvasFadeHandler.FadeIn();
                         Destroy(collisionEntity.gameObject);
                     }
 
