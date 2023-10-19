@@ -1529,6 +1529,10 @@ PrefabInstance:
       propertyPath: stapleClip
       value: 
       objectReference: {fileID: 8300000, guid: edd8edf19f273354e9a3425eb92b3ab0, type: 3}
+    - target: {fileID: 6233210610276017342, guid: 0cb7632e8cffb4da9bf2f1de457ff5e4, type: 3}
+      propertyPath: playerObject
+      value: 
+      objectReference: {fileID: 1934435799}
     - target: {fileID: 6712990400163392423, guid: 0cb7632e8cffb4da9bf2f1de457ff5e4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2865,6 +2869,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1870774785}
   m_CullTransparentMesh: 1
+--- !u!1 &1934435799 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3941577438751496148, guid: e194e81a9c7cdca4cb2afa97ffeca799, type: 3}
+  m_PrefabInstance: {fileID: 7576550466917981127}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2548099478684804193
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3202,7 +3211,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -1844867989858578133, guid: e194e81a9c7cdca4cb2afa97ffeca799, type: 3}
   m_PrefabInstance: {fileID: 7576550466917981127}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1934435799}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c91e498fef39cdb45af6460093cf0508, type: 3}

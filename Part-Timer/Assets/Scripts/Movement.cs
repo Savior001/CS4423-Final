@@ -6,6 +6,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour {
     [SerializeField] float health = 100f;
     [SerializeField] public float speed = 10f;
+    [SerializeField] public float power = 1f;
     [SerializeField] float jumpForce = 10f;
     [SerializeField] float wallSlideModifier = 5f;
     [SerializeField] float groundDistance = 1f;

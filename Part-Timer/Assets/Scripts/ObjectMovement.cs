@@ -16,7 +16,7 @@ public class ObjectMovement : MonoBehaviour {
 
     void Start() {
         phase = superiorObject.phase;
-        Debug.Log("Phase is: " + phase);
+        // Debug.Log("Phase is: " + phase);
         StartCoroutine(MoveCoroutine());
         //set velocity once
     }

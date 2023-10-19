@@ -100,7 +100,7 @@ public class CollisionsHandler : MonoBehaviour {
                 // entityPrefab.transform.rotation = projectileSpawner.transform.rotation;
                 if (collisionEntity.tag == "Superior") {
                     SuperiorMovement superiorObject = collisionEntity.gameObject.GetComponent<SuperiorMovement>();
-                    damage = projectileSpawner.power;
+                    damage = projectileSpawner.getProjectilePower();
                     
                     superiorObject.DealDamage(damage);
                     Debug.Log("Boss lost [" + damage + "] hp. \nBoss at [" + superiorObject.health + "] hp.");
