@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FallingPapersEffect : MonoBehaviour {
     [SerializeField] Movement playerMovement;
-    ParticleSystem particleSystem;
+    ParticleSystem particleSystem = new ParticleSystem();
     
     void Start() {
         particleSystem = GetComponent<ParticleSystem>();

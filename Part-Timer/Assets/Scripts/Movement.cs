@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour {
     [SerializeField] float health = 100f;
-    [SerializeField] public float speed = 10f;
+    [SerializeField] public float speed = 5f;
     [SerializeField] public float power = 1f;
     [SerializeField] float jumpForce = 10f;
     [SerializeField] float wallSlideModifier = 5f;
@@ -30,7 +30,6 @@ public class Movement : MonoBehaviour {
 
     void Awake() {
         rb = GetComponent<Rigidbody2D>();
-
         healthHandler = HealthHandler.singleton;
         powerupHandler = PowerupHandler.singleton;
         healthHandler.hp = health;
@@ -46,14 +45,6 @@ public class Movement : MonoBehaviour {
         animatorClipName = animatorClipInfo[0].clip.name;
         animatorClipLength = animatorClipInfo[0].clip.length;
         animatorClipTime = animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
-
-        if (animatorClipName != null && animatorClipName.Contains("Catch") && previousClipName != animatorClipName) {
-            if (rb.velocity.magnitude > 0) {
-                animator.Play("RunCatch", 0, animatorClipTime);
-                Debug.Log("Playing a animation: " + animatorClipName +
-                    "\nat normailzedTime of: " + animatorClipTime);
-            }
-        }
 
         var newSpeed = powerupHandler.playerSpeed;
 
@@ -105,6 +96,20 @@ public class Movement : MonoBehaviour {
 
     public void Stop(float xvel = 0) {
         rb.velocity = new Vector3(xvel, rb.velocity.y, 0);
+        Debug.Log("Previous animation: " + previousClipName);
+        Debug.Log("Current animation: " + animatorClipName);
+        if (animatorClipName == "RunCatch") {
+            animator.Play("IdleCatch", 0, animatorClipTime);
+            Debug.Log("Switching animation to [" + animatorClipName + "] from ["
+                + previousClipName + "]\nat normailzedTime of: " + animatorClipTime);
+        }
+        // if (animatorClipName != null && animatorClipName.Contains("Catch") && previousClipName != animatorClipName) {
+        //     if (previousClipName == "RunCatch") {
+        //         animator.Play("IdleCatch", 0, animatorClipTime);
+        //         Debug.Log("Switching animation to [" + animatorClipName + "] from ["
+        //             + previousClipName + "]\nat normailzedTime of: " + animatorClipTime);
+        //     }
+        // }
     }
 
     public void Jump() {

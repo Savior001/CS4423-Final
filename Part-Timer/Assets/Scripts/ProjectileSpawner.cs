@@ -14,7 +14,7 @@ public class ProjectileSpawner : MonoBehaviour {
     }
 
     public void ShootStaple(Vector3 targetPosition) {
-        speed += playerObject.GetComponent<Movement>().power;
+        speed = playerObject.GetComponent<Movement>().speed;
         power = playerObject.GetComponent<Movement>().power;
         GetComponent<AudioSource>().PlayOneShot(stapleClip);
         Rigidbody2D newProjectileRB = Instantiate(projectilePrefab, transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();

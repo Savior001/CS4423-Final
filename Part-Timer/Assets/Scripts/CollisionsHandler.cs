@@ -19,6 +19,9 @@ public class CollisionsHandler : MonoBehaviour {
     Animator animator;
     private int debugCount = 0;
     float damage = 0;
+    float powerupCounter = 0f;
+    float playerInitialSpeed = 5f;
+    float playerInitialPower = 1f;
 
     void Awake() {
         try {
@@ -56,8 +59,15 @@ public class CollisionsHandler : MonoBehaviour {
             if (entityPrefab.tag == "Document") {
                 // Debug.Log("[" + entityPrefab.tag + "] collision with " + collisionEntity.tag);
                 if (collisionEntity.tag == "Player") {
+                    Rigidbody2D rb = playerObject.GetComponent<Rigidbody2D>();
+                    // Debug.Log("Velocity is: " + rb.velocity.x);
                     // code catching animations here i think
-                    animator.Play("IdleCatch", 0, 0f);
+                    if (rb.velocity.x == 0) {
+                        animator.Play("IdleCatch", 0, 0f);
+                    } else {
+                        animator.Play("RunCatch", 0, 0f);
+                    }
+
                     scoreHandler.AddScore(150);
                     Destroy(this.gameObject);
                 } else if (collisionEntity.tag == "Despawn") {
@@ -87,8 +97,11 @@ public class CollisionsHandler : MonoBehaviour {
             if (entityPrefab.tag == "Powerup") {
                 // Debug.Log("[" + entityPrefab.tag + "] collision with " + collisionEntity.tag);
                 if (collisionEntity.tag == "Player") {
+                    powerupCounter += 1;
                     // add powerup count or signify type of powerup
                     powerupHandler.AddPowerup();
+                    playerObject.GetComponent<Movement>().speed = playerInitialSpeed + (powerupCounter / 4);
+                    playerObject.GetComponent<Movement>().power = playerInitialPower + (powerupCounter / 4);
                     Destroy(this.gameObject);
                 } else if (collisionEntity.tag == "Despawn") {
                     Destroy(this.gameObject);
@@ -101,9 +114,9 @@ public class CollisionsHandler : MonoBehaviour {
                 if (collisionEntity.tag == "Superior") {
                     SuperiorMovement superiorObject = collisionEntity.gameObject.GetComponent<SuperiorMovement>();
                     damage = projectileSpawner.getProjectilePower();
-                    
                     superiorObject.DealDamage(damage);
                     Debug.Log("Boss lost [" + damage + "] hp. \nBoss at [" + superiorObject.health + "] hp.");
+                    
                     if (superiorObject.health == 0) {
                         Debug.Log("A winner is you!");
                         canvasFadeHandler.FadeIn();
