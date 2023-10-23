@@ -49,6 +49,11 @@ public class Movement : MonoBehaviour {
         var newSpeed = powerupHandler.playerSpeed;
 
         CheckCollisions();
+
+        if (!animatorClipName.Contains("Catch") || animatorClipLength == animator.GetCurrentAnimatorStateInfo(0).normalizedTime) {
+            animator.SetBool("CTC", false);
+        }
+
         if (onGround) {
             animator.SetBool("IsFalling", false);
         } else {
@@ -96,13 +101,15 @@ public class Movement : MonoBehaviour {
 
     public void Stop(float xvel = 0) {
         rb.velocity = new Vector3(xvel, rb.velocity.y, 0);
-        Debug.Log("Previous animation: " + previousClipName);
-        Debug.Log("Current animation: " + animatorClipName);
-        if (animatorClipName == "RunCatch") {
-            animator.Play("IdleCatch", 0, animatorClipTime);
-            Debug.Log("Switching animation to [" + animatorClipName + "] from ["
-                + previousClipName + "]\nat normailzedTime of: " + animatorClipTime);
-        }
+        // if (previousClipName != animatorClipName) {
+        //     Debug.Log("Previous animation: " + previousClipName);
+        //     Debug.Log("Current animation: " + animatorClipName);
+        // }
+        // if (previousClipName == "RunCatch") {
+        //     animator.Play("IdleCatch", 0, animatorClipTime);
+        //     Debug.Log("Switching animation to [" + animatorClipName + "] from ["
+        //         + previousClipName + "]\nat normailzedTime of: " + animatorClipTime);
+        // }
         // if (animatorClipName != null && animatorClipName.Contains("Catch") && previousClipName != animatorClipName) {
         //     if (previousClipName == "RunCatch") {
         //         animator.Play("IdleCatch", 0, animatorClipTime);

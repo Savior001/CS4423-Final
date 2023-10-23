@@ -59,6 +59,7 @@ public class CollisionsHandler : MonoBehaviour {
             if (entityPrefab.tag == "Document") {
                 // Debug.Log("[" + entityPrefab.tag + "] collision with " + collisionEntity.tag);
                 if (collisionEntity.tag == "Player") {
+                    animator.SetBool("CTC", true);
                     Rigidbody2D rb = playerObject.GetComponent<Rigidbody2D>();
                     // Debug.Log("Velocity is: " + rb.velocity.x);
                     // code catching animations here i think
