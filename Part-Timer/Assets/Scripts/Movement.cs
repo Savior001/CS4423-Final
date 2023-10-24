@@ -50,7 +50,7 @@ public class Movement : MonoBehaviour {
 
         CheckCollisions();
 
-        if (!animatorClipName.Contains("Catch") || animatorClipLength == animator.GetCurrentAnimatorStateInfo(0).normalizedTime) {
+        if (previousClipName == animatorClipName && !animatorClipName.Contains("Catch")) {
             animator.SetBool("CTC", false);
         }
 
