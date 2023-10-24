@@ -22,6 +22,7 @@ public class CollisionsHandler : MonoBehaviour {
     float powerupCounter = 0f;
     float playerInitialSpeed = 5f;
     float playerInitialPower = 1f;
+    float animatorTimer = 0f;
 
     void Awake() {
         try {
@@ -52,6 +53,17 @@ public class CollisionsHandler : MonoBehaviour {
         }
         // unitGetClip = Resources.Load<AudioClip>("UnitGet");
         // audioSource = GetComponent<AudioSource>();
+    }
+
+    void FixedUpdate() {
+        animatorTimer = animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+
+        if (animator.GetBool("CTC") == true) {
+            Debug.Log("catch animaton timer [" + animatorTimer + "]");
+            if (animatorTimer > 0.4f) {
+                animator.SetBool("CTC", false);
+            }
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collisionEntity) {

@@ -50,10 +50,6 @@ public class Movement : MonoBehaviour {
 
         CheckCollisions();
 
-        if (previousClipName == animatorClipName && !animatorClipName.Contains("Catch")) {
-            animator.SetBool("CTC", false);
-        }
-
         if (onGround) {
             animator.SetBool("IsFalling", false);
         } else {
