@@ -1573,6 +1573,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6712990400163392423, guid: 0cb7632e8cffb4da9bf2f1de457ff5e4, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8884092755973690971, guid: 0cb7632e8cffb4da9bf2f1de457ff5e4, type: 3}
       propertyPath: m_Name
       value: Weapon
