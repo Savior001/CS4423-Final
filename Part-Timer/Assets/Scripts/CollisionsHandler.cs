@@ -59,14 +59,8 @@ public class CollisionsHandler : MonoBehaviour {
         AnimatorClipInfo[] animClipInfo = animator.GetCurrentAnimatorClipInfo(0);
         animatorTimer = animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
 
-        // if (animator.GetBool("CTC") == true) {
-        //     Debug.Log(animClipInfo[0].clip.name + " timer [" + animatorTimer + "]");
-        //     if (animatorTimer > 0.4f) {
-        //         animator.SetBool("CTC", false);
-        //     }
-        // }
-        if (animClipInfo[0].clip.name == "RunCatch") {
-            Debug.Log(animClipInfo[0].clip.name + " animaton timer [" + animatorTimer + "]");
+        if (animClipInfo[0].clip.name == "RunCatchAnimation" || animClipInfo[0].clip.name == "IdleCatchAnimation") {
+            // Debug.Log(animClipInfo[0].clip.name + " animaton timer [" + animatorTimer + "]");
             if (animatorTimer > 0.4f) {
                 animator.SetBool("CTC", false);
             }
