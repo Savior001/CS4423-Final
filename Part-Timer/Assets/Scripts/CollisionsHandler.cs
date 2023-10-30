@@ -57,20 +57,18 @@ public class CollisionsHandler : MonoBehaviour {
 
     void FixedUpdate() {
         AnimatorClipInfo[] animClipInfo = animator.GetCurrentAnimatorClipInfo(0);
-        animatorTimer = animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
 
-        if (animator.GetBool("IsCatching")) {
-            if (animatorTimer > 0.4f) {
-                animator.SetBool("IsCatching", false);
-            }
+        if (animatorTimer > 0.4f) {
+            animator.SetBool("IsCatching", false);
+            animator.SetBool("CTC", false);
         }
 
-        if (animClipInfo[0].clip.name == "RunCatchAnimation" || animClipInfo[0].clip.name == "IdleCatchAnimation") {
-            // Debug.Log(animClipInfo[0].clip.name + " animaton timer [" + animatorTimer + "]");
-            if (animatorTimer > 0.4f) {
-                animator.SetBool("CTC", false);
-            }
-        }
+        // if (animClipInfo[0].clip.name == "RunCatchAnimation" || animClipInfo[0].clip.name == "IdleCatchAnimation") {
+        //     // Debug.Log(animClipInfo[0].clip.name + " animaton timer [" + animatorTimer + "]");
+        //     if (animatorTimer > 0.4f) {
+        //         animator.SetBool("CTC", false);
+        //     }
+        // }
     }
 
     void OnTriggerEnter2D(Collider2D collisionEntity) {
@@ -80,6 +78,7 @@ public class CollisionsHandler : MonoBehaviour {
                 if (collisionEntity.tag == "Player") {
                     animator.SetBool("IsCatching", true);
                     animator.SetBool("CTC", true);
+                    animatorTimer = animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
                     Rigidbody2D rb = playerObject.GetComponent<Rigidbody2D>();
                     // Debug.Log("Velocity is: " + rb.velocity.x);
                     // code catching animations here i think
