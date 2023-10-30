@@ -59,6 +59,12 @@ public class CollisionsHandler : MonoBehaviour {
         AnimatorClipInfo[] animClipInfo = animator.GetCurrentAnimatorClipInfo(0);
         animatorTimer = animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
 
+        if (animator.GetBool("IsCatching")) {
+            if (animatorTimer > 0.4f) {
+                animator.SetBool("IsCatching", false);
+            }
+        }
+
         if (animClipInfo[0].clip.name == "RunCatchAnimation" || animClipInfo[0].clip.name == "IdleCatchAnimation") {
             // Debug.Log(animClipInfo[0].clip.name + " animaton timer [" + animatorTimer + "]");
             if (animatorTimer > 0.4f) {
@@ -72,15 +78,16 @@ public class CollisionsHandler : MonoBehaviour {
             if (entityPrefab.tag == "Document") {
                 // Debug.Log("[" + entityPrefab.tag + "] collision with " + collisionEntity.tag);
                 if (collisionEntity.tag == "Player") {
+                    animator.SetBool("IsCatching", true);
                     animator.SetBool("CTC", true);
                     Rigidbody2D rb = playerObject.GetComponent<Rigidbody2D>();
                     // Debug.Log("Velocity is: " + rb.velocity.x);
                     // code catching animations here i think
-                    if (rb.velocity.x == 0) {
-                        animator.Play("IdleCatch", 0, 0f);
-                    } else {
-                        animator.Play("RunCatch", 0, 0f);
-                    }
+                    // if (rb.velocity.x == 0) {
+                    //     animator.Play("IdleCatch", 0, 0f);
+                    // } else {
+                    //     animator.Play("RunCatch", 0, 0f);
+                    // }
 
                     scoreHandler.AddScore(150);
                     Destroy(this.gameObject);
