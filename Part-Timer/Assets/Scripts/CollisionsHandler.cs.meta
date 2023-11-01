@@ -3,7 +3,10 @@ guid: 25b208f48670fb24489e76ad66d56796
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - entityPrefab: {instanceID: 0}
+  - healthHandler: {instanceID: 0}
+  - gameInfoSO: {fileID: 11400000, guid: 89be9e7458d49b74f9d57e6ebf2d2a35, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Movement : MonoBehaviour {
-    [SerializeField] float health = 100f;
+    // [SerializeField] float health = 100f;
     [SerializeField] public float speed = 5f;
     [SerializeField] public float power = 1f;
     [SerializeField] float jumpForce = 10f;
@@ -15,13 +15,14 @@ public class Movement : MonoBehaviour {
     [SerializeField] LayerMask wallWask;
     [SerializeField] Transform body;
     Rigidbody2D rb;
-    HealthHandler healthHandler;
+    // HealthHandler healthHandler;
     PowerupHandler powerupHandler;
     private bool onWall;
     private bool wallSlide => onWall && !onGround && rb.velocity.y < 0f;
     private int debugCount = 0;
     public bool onGround = true;
     public Animator animator;
+    public GameInfoSO gameInfoSO;
     AnimatorClipInfo[] animatorClipInfo;
     string animatorClipName = "";
     string previousClipName = null;
@@ -30,9 +31,9 @@ public class Movement : MonoBehaviour {
 
     void Awake() {
         rb = GetComponent<Rigidbody2D>();
-        healthHandler = HealthHandler.singleton;
+        // healthHandler = HealthHandler.singleton;
         powerupHandler = PowerupHandler.singleton;
-        healthHandler.hp = health;
+        // healthHandler.hp = health;
         powerupHandler.playerSpeed = speed;
     }
 

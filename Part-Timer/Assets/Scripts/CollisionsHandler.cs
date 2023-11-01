@@ -12,17 +12,18 @@ public class CollisionsHandler : MonoBehaviour {
     ProjectileSpawner projectileSpawner;
     // [SerializeField] AudioClip unitGetClip;
     // AudioSource audioSource;
+    // HealthHandler healthHandler;
     ScoreHandler scoreHandler;
-    HealthHandler healthHandler;
     PowerupHandler powerupHandler;
     CanvasFadeHandler canvasFadeHandler;
     Animator animator;
+    public GameInfoSO gameInfoSO;
     private int debugCount = 0;
     float damage = 0;
     float powerupCounter = 0f;
     float playerInitialSpeed = 5f;
     float playerInitialPower = 1f;
-    float animatorTimer = 0f;
+    string previousAnimation = "";
 
     void Awake() {
         try {
@@ -40,7 +41,7 @@ public class CollisionsHandler : MonoBehaviour {
 
     void Start() {
         scoreHandler = ScoreHandler.singleton;
-        healthHandler = HealthHandler.singleton;
+        // healthHandler = HealthHandler.singleton;
         powerupHandler = PowerupHandler.singleton;
         canvasFadeHandler = CanvasFadeHandler.singleton;
         try {
@@ -56,12 +57,20 @@ public class CollisionsHandler : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        AnimatorClipInfo[] animClipInfo = animator.GetCurrentAnimatorClipInfo(0);
-
-        if (animatorTimer > 0.4f) {
-            animator.SetBool("IsCatching", false);
+        AnimatorClipInfo[] clip = animator.GetCurrentAnimatorClipInfo(0);
+        string currentAnimation = clip[0].clip.name;
+        if (previousAnimation != currentAnimation && (previousAnimation.Contains("Catch") && currentAnimation.Contains("Catch"))) {
+            animator.SetBool("CTC", true);
+        } else {
             animator.SetBool("CTC", false);
         }
+        previousAnimation = currentAnimation;
+        // AnimatorClipInfo[] animClipInfo = animator.GetCurrentAnimatorClipInfo(0);
+
+        // if (animatorTimer > 0.4f) {
+        //     animator.SetBool("IsCatching", false);
+        //     animator.SetBool("CTC", false);
+        // }
 
         // if (animClipInfo[0].clip.name == "RunCatchAnimation" || animClipInfo[0].clip.name == "IdleCatchAnimation") {
         //     // Debug.Log(animClipInfo[0].clip.name + " animaton timer [" + animatorTimer + "]");
@@ -76,17 +85,23 @@ public class CollisionsHandler : MonoBehaviour {
             if (entityPrefab.tag == "Document") {
                 // Debug.Log("[" + entityPrefab.tag + "] collision with " + collisionEntity.tag);
                 if (collisionEntity.tag == "Player") {
-                    animator.SetBool("IsCatching", true);
-                    animator.SetBool("CTC", true);
-                    animatorTimer = animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
+                    // animator.SetBool("IsCatching", true);
+                    // animator.SetBool("CTC", true);
+                    // animatorTimer = animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
                     Rigidbody2D rb = playerObject.GetComponent<Rigidbody2D>();
                     // Debug.Log("Velocity is: " + rb.velocity.x);
                     // code catching animations here i think
-                    // if (rb.velocity.x == 0) {
-                    //     animator.Play("IdleCatch", 0, 0f);
-                    // } else {
-                    //     animator.Play("RunCatch", 0, 0f);
-                    // }
+                    if (animator.GetFloat("Speed") > 0.01) {
+                        if (previousAnimation.Contains("Catch") && previousAnimation != "RunCatch") {
+                            animator.SetBool("CTC", true);
+                        }
+                        animator.Play("RunCatch", 0, 0f);
+                    } else {
+                        if (previousAnimation.Contains("Catch") && previousAnimation != "IdleCatch") {
+                            animator.SetBool("CTC", true);
+                        }
+                        animator.Play("IdleCatch", 0, 0f);
+                    }
 
                     scoreHandler.AddScore(150);
                     Destroy(this.gameObject);
@@ -99,9 +114,9 @@ public class CollisionsHandler : MonoBehaviour {
             if (entityPrefab.tag == "Damage") {
                 // Debug.Log("[" + entityPrefab.tag + "] collision with " + collisionEntity.tag);
                 if (collisionEntity.tag == "Player") {
-                    healthHandler.DealDamage(10);
+                    gameInfoSO.DealDamageToPlayer(10);
 
-                    if (healthHandler.hp == 0) {
+                    if (gameInfoSO.playerHP == 0) {
                         Debug.Log("You ded...");
                         canvasFadeHandler.FadeIn();
                         Destroy(collisionEntity.gameObject);

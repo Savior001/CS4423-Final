@@ -1525,6 +1525,26 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1740112207429754756, guid: 0cb7632e8cffb4da9bf2f1de457ff5e4, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 274161749, guid: c1d7bd0e2f3b2e3438c1f272ac21ce04, type: 3}
+    - target: {fileID: 1740112207429754756, guid: 0cb7632e8cffb4da9bf2f1de457ff5e4, type: 3}
+      propertyPath: m_SortingOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740112207429754756, guid: 0cb7632e8cffb4da9bf2f1de457ff5e4, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5512977232917274561, guid: 0cb7632e8cffb4da9bf2f1de457ff5e4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.115
+      objectReference: {fileID: 0}
+    - target: {fileID: 5512977232917274561, guid: 0cb7632e8cffb4da9bf2f1de457ff5e4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.781
+      objectReference: {fileID: 0}
     - target: {fileID: 6233210610276017342, guid: 0cb7632e8cffb4da9bf2f1de457ff5e4, type: 3}
       propertyPath: stapleClip
       value: 
@@ -2744,7 +2764,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14bd4ac087963a542939ab0111095c6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 1000
+  healthbar: {fileID: 1780638351}
+  gameInfoSO: {fileID: 11400000, guid: 89be9e7458d49b74f9d57e6ebf2d2a35, type: 2}
 --- !u!114 &1789760367 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5217703782153231639, guid: e194e81a9c7cdca4cb2afa97ffeca799, type: 3}
@@ -2940,7 +2961,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8093325500202738215, guid: 839d4f7fc06ea4a4fac922331e5ba099, type: 3}
       propertyPath: timerStop
-      value: 999
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

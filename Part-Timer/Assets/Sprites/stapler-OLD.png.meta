@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: ff2ddca497f8eda4f86ea26117ec34e5
+guid: 8432feb00d4998748830351adf212f76
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,28 +123,28 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: weapon-projectileV2_0
+      name: stapler_0
       rect:
         serializedVersion: 2
         x: 0
         y: 48
         width: 48
         height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ddd1666bc703114488bc3852e9bab38
-      internalID: -649898219
+      spriteID: 567c580cf59bc654a9c3c985ccf5f6c5
+      internalID: 1896724608
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: weapon-projectileV2_1
+      name: stapler_1
       rect:
         serializedVersion: 2
         x: 0
@@ -152,14 +152,14 @@ TextureImporter:
         width: 48
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 201c7db404d9ad448a990338754c1fba
-      internalID: -1637865819
+      spriteID: 4fe8a534fc6e6b14f85fcd5fb1b32edc
+      internalID: 1772902715
       vertices: []
       indices: 
       edges: []
@@ -175,8 +175,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      weapon-projectileV2_0: -649898219
-      weapon-projectileV2_1: -1637865819
+      stapler_0: 1896724608
+      stapler_1: 1772902715
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
