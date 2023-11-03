@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db5c7e86c67acf949bed12df253679d3, type: 3}
   m_Name: GameInfoSO
   m_EditorClassIdentifier: 
+  initialPlayerHP: 100
   timer: 0
   phase: 1
-  playerHP: 100
+  playerHP: 0
   playerPP: 0
   playerScore: 0

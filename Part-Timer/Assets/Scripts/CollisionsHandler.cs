@@ -57,14 +57,21 @@ public class CollisionsHandler : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        AnimatorClipInfo[] clip = animator.GetCurrentAnimatorClipInfo(0);
-        string currentAnimation = clip[0].clip.name;
-        if (previousAnimation != currentAnimation && (previousAnimation.Contains("Catch") && currentAnimation.Contains("Catch"))) {
-            animator.SetBool("CTC", true);
-        } else {
-            animator.SetBool("CTC", false);
+        try {
+            AnimatorClipInfo[] clip = animator.GetCurrentAnimatorClipInfo(0);
+            string currentAnimation = clip[0].clip.name;
+            if (previousAnimation != currentAnimation && (previousAnimation.Contains("Catch") && currentAnimation.Contains("Catch"))) {
+                animator.SetBool("CTC", true);
+            } else {
+                animator.SetBool("CTC", false);
+            }
+            previousAnimation = currentAnimation;
+        } catch(NullReferenceException e) {
+            if (debugCount == 0) {
+                Debug.Log("Error on FixedUpdate(), player is kill: " + e);
+                debugCount += 1;
+            }
         }
-        previousAnimation = currentAnimation;
         // AnimatorClipInfo[] animClipInfo = animator.GetCurrentAnimatorClipInfo(0);
 
         // if (animatorTimer > 0.4f) {

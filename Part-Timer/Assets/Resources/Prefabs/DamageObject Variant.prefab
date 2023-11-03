@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Damage
       objectReference: {fileID: 0}
+    - target: {fileID: 6854490679117915847, guid: 3683970f8e4a9544bba06591bc55ac98, type: 3}
+      propertyPath: gameInfoSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 89be9e7458d49b74f9d57e6ebf2d2a35, type: 2}
     - target: {fileID: 7857130116802382126, guid: 3683970f8e4a9544bba06591bc55ac98, type: 3}
       propertyPath: m_Color.b
       value: 0.28627452
