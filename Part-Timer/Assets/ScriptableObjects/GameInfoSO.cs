@@ -16,10 +16,14 @@ public class GameInfoSO : ScriptableObject {
     public int playerPP = 0;
     public int playerScore = 0;
 
-    private void OnEnable() => hideFlags = HideFlags.DontUnloadUnusedAsset;
-    // private void OnEnable() {
-    //     playerHP = initialPlayerHP;
-    // }
+    // private void OnEnable() => hideFlags = HideFlags.DontUnloadUnusedAsset;
+    void Awake() {
+        OnEnable();
+    }
+
+    public void OnEnable() {
+        playerHP = initialPlayerHP;
+    }
 
     public void DealDamageToPlayer(int damage) {
         playerHP -= damage;

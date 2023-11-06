@@ -8,8 +8,8 @@ public class SceneUpdateHandler : MonoBehaviour {
 
     public void PlayGame() {
         SceneManager.LoadScene("GameScene");
-        gameInfoSO.Disable();
-        gameInfoSO.Enable();
+        // gameInfoSO.Disable();
+        gameInfoSO.OnEnable();
     }
 
     public void QuitGame() {
@@ -19,5 +19,6 @@ public class SceneUpdateHandler : MonoBehaviour {
 
     public void MainMenu() {
         SceneManager.LoadScene("MainMenu");
+        gameInfoSO.OnEnable();
     }
 }

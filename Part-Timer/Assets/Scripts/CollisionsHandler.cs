@@ -71,6 +71,11 @@ public class CollisionsHandler : MonoBehaviour {
                 Debug.Log("Error on FixedUpdate(), player is kill: " + e);
                 debugCount += 1;
             }
+        } catch (MissingReferenceException e) {
+            if (debugCount == 0) {
+                Debug.Log("Error on FixedUpdate(), player is kill: " + e);
+                debugCount += 1;
+            }
         }
         // AnimatorClipInfo[] animClipInfo = animator.GetCurrentAnimatorClipInfo(0);
 
