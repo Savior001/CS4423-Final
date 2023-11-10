@@ -2,10 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 [CreateAssetMenu(fileName = "ScriptableObjects", menuName = "ScriptableObjects/GameInfo")]
 public class GameInfoSO : ScriptableObject {
-    // [SerializeField] private int initialTimer = 0;
+    [SerializeField] private int initialTimer = 0;
     // [SerializeField] private int initialPhase = 0;
     [SerializeField] private int initialPlayerHP = 100;
     // [SerializeField] private int initialPlayerPP = 0;
@@ -21,8 +20,24 @@ public class GameInfoSO : ScriptableObject {
         OnEnable();
     }
 
+    void Start() {
+    }
+
     public void OnEnable() {
+        timer = initialTimer;
         playerHP = initialPlayerHP;
+    }
+
+    public void StartTimer(MonoBehaviour instance) {
+        instance.StartCoroutine(TimerRoutine());
+    }
+
+    IEnumerator TimerRoutine() {
+        while(true){
+            yield return new WaitForSeconds(1);
+            timer += 1;
+            yield return null;
+        }
     }
 
     public void DealDamageToPlayer(int damage) {
