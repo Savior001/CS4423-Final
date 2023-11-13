@@ -76,6 +76,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Powerup
       objectReference: {fileID: 0}
+    - target: {fileID: 6854490679117915847, guid: 3683970f8e4a9544bba06591bc55ac98, type: 3}
+      propertyPath: gameInfoSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 89be9e7458d49b74f9d57e6ebf2d2a35, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -132,8 +132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c91e498fef39cdb45af6460093cf0508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 30
   speed: 6
+  power: 1
   jumpForce: 25
   wallSlideModifier: 1.5
   groundDistance: 0.5
@@ -147,6 +147,7 @@ MonoBehaviour:
   body: {fileID: 5706875961266799393}
   onGround: 1
   animator: {fileID: 1853908994246517715}
+  gameInfoSO: {fileID: 11400000, guid: 89be9e7458d49b74f9d57e6ebf2d2a35, type: 2}
 --- !u!50 &6852460330931230514
 Rigidbody2D:
   serializedVersion: 4

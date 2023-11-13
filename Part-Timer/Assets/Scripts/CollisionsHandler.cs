@@ -8,21 +8,14 @@ public class CollisionsHandler : MonoBehaviour {
     [SerializeField] GameObject entityPrefab;
     GameObject playerObject;
     GameObject playerBody;
-    
     ProjectileSpawner projectileSpawner;
     // [SerializeField] AudioClip unitGetClip;
     // AudioSource audioSource;
-    // HealthHandler healthHandler;
-    ScoreHandler scoreHandler;
-    PowerupHandler powerupHandler;
     CanvasFadeHandler canvasFadeHandler;
     Animator animator;
     public GameInfoSO gameInfoSO;
     private int debugCount = 0;
     float damage = 0;
-    float powerupCounter = 0f;
-    float playerInitialSpeed = 5f;
-    float playerInitialPower = 1f;
     string previousAnimation = "";
 
     void Awake() {
@@ -40,9 +33,6 @@ public class CollisionsHandler : MonoBehaviour {
     }
 
     void Start() {
-        scoreHandler = ScoreHandler.singleton;
-        // healthHandler = HealthHandler.singleton;
-        powerupHandler = PowerupHandler.singleton;
         canvasFadeHandler = CanvasFadeHandler.singleton;
         try {
             animator = playerBody.GetComponent<Animator>();
@@ -115,10 +105,10 @@ public class CollisionsHandler : MonoBehaviour {
                         animator.Play("IdleCatch", 0, 0f);
                     }
 
-                    scoreHandler.AddScore(150);
+                    gameInfoSO.AddScore(150);
                     Destroy(this.gameObject);
                 } else if (collisionEntity.tag == "Despawn") {
-                    scoreHandler.DeductScore(5);
+                    gameInfoSO.DeductScore(5);
                     Destroy(this.gameObject);
                 }
             }
@@ -134,7 +124,7 @@ public class CollisionsHandler : MonoBehaviour {
                         Destroy(collisionEntity.gameObject);
                     }
 
-                    scoreHandler.DeductScore(50);
+                    gameInfoSO.DeductScore(50);
                     Destroy(this.gameObject);
                 } else if (collisionEntity.tag == "Despawn") {
                     Destroy(this.gameObject);
@@ -144,11 +134,8 @@ public class CollisionsHandler : MonoBehaviour {
             if (entityPrefab.tag == "Powerup") {
                 // Debug.Log("[" + entityPrefab.tag + "] collision with " + collisionEntity.tag);
                 if (collisionEntity.tag == "Player") {
-                    powerupCounter += 1;
                     // add powerup count or signify type of powerup
-                    powerupHandler.AddPowerup();
-                    playerObject.GetComponent<Movement>().speed = playerInitialSpeed + (powerupCounter / 4);
-                    playerObject.GetComponent<Movement>().power = playerInitialPower + (powerupCounter / 4);
+                    gameInfoSO.AddPowerup();
                     Destroy(this.gameObject);
                 } else if (collisionEntity.tag == "Despawn") {
                     Destroy(this.gameObject);
@@ -164,7 +151,7 @@ public class CollisionsHandler : MonoBehaviour {
                     superiorObject.DealDamage(damage);
                     Debug.Log("Boss lost [" + damage + "] hp. \nBoss at [" + superiorObject.health + "] hp.");
                     
-                    if (superiorObject.health == 0) {
+                    if (superiorObject.health <= 0) {
                         Debug.Log("A winner is you!");
                         canvasFadeHandler.FadeIn();
                         Destroy(collisionEntity.gameObject);

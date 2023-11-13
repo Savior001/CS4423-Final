@@ -15,8 +15,6 @@ public class Movement : MonoBehaviour {
     [SerializeField] LayerMask wallWask;
     [SerializeField] Transform body;
     Rigidbody2D rb;
-    // HealthHandler healthHandler;
-    PowerupHandler powerupHandler;
     private bool onWall;
     private bool wallSlide => onWall && !onGround && rb.velocity.y < 0f;
     private int debugCount = 0;
@@ -31,10 +29,6 @@ public class Movement : MonoBehaviour {
 
     void Awake() {
         rb = GetComponent<Rigidbody2D>();
-        // healthHandler = HealthHandler.singleton;
-        powerupHandler = PowerupHandler.singleton;
-        // healthHandler.hp = health;
-        powerupHandler.playerSpeed = speed;
     }
 
     void Start() {
@@ -47,7 +41,8 @@ public class Movement : MonoBehaviour {
         animatorClipLength = animatorClipInfo[0].clip.length;
         animatorClipTime = animator.GetCurrentAnimatorStateInfo(0).normalizedTime;
 
-        var newSpeed = powerupHandler.playerSpeed;
+        var newPower = gameInfoSO.playerPP;
+        var newSpeed = gameInfoSO.playerSpeed;
 
         CheckCollisions();
 
@@ -62,9 +57,15 @@ public class Movement : MonoBehaviour {
         }
 
         if (wallSlide) { WallSlide(); }
+
         if (speed < newSpeed) {
             speed = newSpeed;
             Debug.Log("new speed: " + speed);
+        }
+
+        if (power < newPower) {
+            power = newPower;
+            Debug.Log("new power: " + power);
         }
 
         if (!onGround && rb.velocity.y <= 0) {

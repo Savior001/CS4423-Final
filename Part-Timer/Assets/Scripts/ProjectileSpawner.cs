@@ -7,6 +7,7 @@ public class ProjectileSpawner : MonoBehaviour {
     [SerializeField] GameObject playerObject;
     [SerializeField] GameObject weaponObject;
     [SerializeField] AudioClip stapleClip;
+    public GameInfoSO gameInfoSO;
     float speed = 5f;
     float power = 1f;
 
@@ -14,8 +15,8 @@ public class ProjectileSpawner : MonoBehaviour {
     }
 
     public void ShootStaple(Vector3 targetPosition) {
-        speed = playerObject.GetComponent<Movement>().speed;
-        power = playerObject.GetComponent<Movement>().power;
+        speed = gameInfoSO.playerSpeed;
+        power = gameInfoSO.playerPower;
         GetComponent<AudioSource>().PlayOneShot(stapleClip);
         Rigidbody2D newProjectileRB = Instantiate(projectilePrefab, transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();
         targetPosition.z = 0;
