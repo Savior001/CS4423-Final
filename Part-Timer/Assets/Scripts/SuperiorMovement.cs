@@ -10,6 +10,7 @@ public class SuperiorMovement : MonoBehaviour {
     [SerializeField] float timer = 0f;
     [SerializeField] float moveSpeedMultiplier = 1f;
     [SerializeField] public int timerStop = 10;
+    [SerializeField] float transitionTime = 0.6f;
     Vector3 newPos;
     float runningTime = 0f;
     bool updatePhase = true;
@@ -29,6 +30,11 @@ public class SuperiorMovement : MonoBehaviour {
         }
     }
 
+    IEnumerator PhaseTransition() {
+        yield return new WaitForSeconds(5);
+        MoveToPhaseTwo();
+    }
+
     void FixedUpdate() {
         runningTime = (runningTime + Time.deltaTime) * moveSpeedMultiplier;
         if (timer > timerStop) { phase = 2; }
@@ -37,7 +43,7 @@ public class SuperiorMovement : MonoBehaviour {
             Movement();
         } else {
             if (updatePhase) {
-                MoveToPhaseTwo();
+                StartCoroutine(PhaseTransition());
             } else {
                 MovementPhaseTwo();
             }
@@ -63,7 +69,7 @@ public class SuperiorMovement : MonoBehaviour {
         updatePhase = false;
         xPos = 7.5f;
         newPos = new Vector3(xPos, 0f, transform.position.z);
-        transform.position = Vector3.Lerp(transform.position, newPos, Time.deltaTime * speed / 3);
+        transform.position = Vector3.Lerp(transform.position, newPos, Time.deltaTime * transitionTime);
         if (Vector3.Distance(transform.position, newPos) <= 0.01f) {
             xPos = Random.Range(-4.5f, 4.5f);
             newPos = new Vector3(xPos, transform.position.y, transform.position.z);

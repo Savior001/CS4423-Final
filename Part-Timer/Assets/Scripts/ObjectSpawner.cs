@@ -12,6 +12,7 @@ public class ObjectSpawner : MonoBehaviour {
     GameObject spawnChoice;
     float spawnRate = 0f;
     public int phase = 1;
+    private bool trasitionTime = true;
     
     void Start() {
         SpawnEntitiesOverTime();
@@ -40,6 +41,11 @@ public class ObjectSpawner : MonoBehaviour {
                 if (phase == 1) {
                     spawnObject = Instantiate(spawnChoice, new Vector3(superiorObject.transform.position.x, spawnHeigth, 0), Quaternion.identity);
                 } else {
+                    if (trasitionTime) {
+                        yield return new WaitForSeconds(6);
+                        trasitionTime = false;
+                    }
+
                     float rand = Random.Range(0f, 1f);
                     
                     if (rand < 0.5f)

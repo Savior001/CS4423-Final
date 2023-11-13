@@ -152,9 +152,11 @@ public class CollisionsHandler : MonoBehaviour {
                     Debug.Log("Boss lost [" + damage + "] hp. \nBoss at [" + superiorObject.health + "] hp.");
                     
                     if (superiorObject.health <= 0) {
-                        Debug.Log("A winner is you!");
-                        canvasFadeHandler.FadeIn();
                         Destroy(collisionEntity.gameObject);
+                        Debug.Log("A winner is you!");
+                        GameObject wallObject = GameObject.FindWithTag("Wall");
+                        wallObject.GetComponent<BoxCollider2D>().enabled = false;
+                        // canvasFadeHandler.FadeIn();
                     }
 
                     // scoreHandler.DeductScore(50);

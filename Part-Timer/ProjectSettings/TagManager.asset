@@ -12,6 +12,7 @@ TagManager:
   - GameOverButtons
   - Projectile
   - PlayerShoot
+  - Wall
   layers:
   - Default
   - TransparentFX
