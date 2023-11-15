@@ -13,6 +13,7 @@ TagManager:
   - Projectile
   - PlayerShoot
   - Wall
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

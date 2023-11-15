@@ -165,6 +165,15 @@ public class CollisionsHandler : MonoBehaviour {
                     Destroy(this.gameObject);
                 }
             }
+
+            if (entityPrefab.tag == "Checkpoint") {
+                // Debug.Log("[" + entityPrefab.tag + "] collision with " + collisionEntity.tag);
+                if (collisionEntity.tag == "Player") {
+                    GameObject cameraObject = GameObject.FindWithTag("MainCamera");
+                    cameraObject.GetComponent<CameraFollow>().enabled = true;
+                    // canvasFadeHandler.Transition();
+                }
+            }
         } catch (Exception e) {
             if (debugCount == 0) {
                 Debug.Log("Error on OnTriggerEnter2D(Collider2D collisionEntity), player is kill: " + e);

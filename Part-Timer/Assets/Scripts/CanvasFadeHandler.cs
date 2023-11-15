@@ -31,6 +31,10 @@ public class CanvasFadeHandler : MonoBehaviour {
         quitButton.interactable = false;
         StartCoroutine(FadeInCoroutine());
     }
+
+    public void Transition() {
+        
+    }
     
     IEnumerator FadeInCoroutine() {
         yield return new WaitForSeconds(1);
