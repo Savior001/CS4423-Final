@@ -15,6 +15,8 @@ public class CollisionsHandler : MonoBehaviour {
     Animator animator;
     public GameInfoSO gameInfoSO;
     private int debugCount = 0;
+    private float zoom = 0f;
+    private int zoomTransistion = 0;
     float damage = 0;
     string previousAnimation = "";
 
@@ -67,6 +69,7 @@ public class CollisionsHandler : MonoBehaviour {
                 debugCount += 1;
             }
         }
+
         // AnimatorClipInfo[] animClipInfo = animator.GetCurrentAnimatorClipInfo(0);
 
         // if (animatorTimer > 0.4f) {
@@ -80,6 +83,12 @@ public class CollisionsHandler : MonoBehaviour {
         //         animator.SetBool("CTC", false);
         //     }
         // }
+    }
+
+    void Update() {
+        if (zoomTransistion == 1 && zoom < 2.19f) {
+            zoom += 0.1f;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collisionEntity) {
@@ -155,7 +164,7 @@ public class CollisionsHandler : MonoBehaviour {
                         Destroy(collisionEntity.gameObject);
                         Debug.Log("A winner is you!");
                         GameObject wallObject = GameObject.FindWithTag("Wall");
-                        wallObject.GetComponent<BoxCollider2D>().enabled = false;
+                        wallObject.GetComponent<BoxCollider2D>().isTrigger = true;
                         // canvasFadeHandler.FadeIn();
                     }
 
@@ -169,9 +178,23 @@ public class CollisionsHandler : MonoBehaviour {
             if (entityPrefab.tag == "Checkpoint") {
                 // Debug.Log("[" + entityPrefab.tag + "] collision with " + collisionEntity.tag);
                 if (collisionEntity.tag == "Player") {
+                    GameObject weaponObject = GameObject.FindWithTag("Weapon");
+                    weaponObject.SetActive(false);
                     GameObject cameraObject = GameObject.FindWithTag("MainCamera");
                     cameraObject.GetComponent<CameraFollow>().enabled = true;
                     // canvasFadeHandler.Transition();
+                }
+            }
+
+            if (entityPrefab.tag == "VM") {
+                if (collisionEntity.tag == "Player") {
+                    // BUSTED
+                    // GameObject cameraObject = GameObject.FindWithTag("MainCamera");
+                    // cameraObject.GetComponent<CameraFollow>().enabled = false;
+
+                    // Vector3 targetPosition = new Vector3(entityPrefab.transform.position.x, 0, -10);
+                    // cameraObject.GetComponent<Transform>().position = Vector3.Lerp(cameraObject.transform.position, targetPosition, 0.3f);
+                    // cameraObject.GetComponent<Camera>().orthographicSize = zoom;
                 }
             }
         } catch (Exception e) {
@@ -182,9 +205,20 @@ public class CollisionsHandler : MonoBehaviour {
         }
     }
 
-    // void OnTriggerExit2D(Collider2D collisionEntity) {
-    //     if(entityPrefab.tag == "Edge") {
-    //         Debug.Log("[" + entityPrefab.tag + "] collision with " + collisionEntity.tag);
-    //     }
-    // }
+    void OnTriggerExit2D(Collider2D collisionEntity) {
+        // if (entityPrefab.tag == "Wall") {
+        //     if (collisionEntity.tag == "Player") {
+        //         Debug.Log("[" + entityPrefab.tag + "] collision with " + collisionEntity.tag);
+        //         // entityPrefab.GetComponent<BoxCollider2D>().isTrigger = false;
+        //     }
+        // }
+
+        if (entityPrefab.tag == "Checkpoint") {
+            if (collisionEntity.tag == "Player") {
+                Debug.Log("[" + entityPrefab.tag + "] collision with " + collisionEntity.tag);
+                GameObject wallObject = GameObject.FindWithTag("Wall");
+                wallObject.GetComponent<BoxCollider2D>().isTrigger = false;
+            }
+        }
+    }
 }

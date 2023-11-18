@@ -95,5 +95,8 @@ public class SuperiorMovement : MonoBehaviour {
 
     public void DealDamage(float damage) {
         health -= damage;
+        if (health <= 0) {
+            phase = 3;
+        }
     }
 }
