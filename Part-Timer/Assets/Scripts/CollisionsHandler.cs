@@ -15,7 +15,6 @@ public class CollisionsHandler : MonoBehaviour {
     Animator animator;
     public GameInfoSO gameInfoSO;
     private int debugCount = 0;
-    private float zoom = 2.25f;
     float damage = 0;
     string previousAnimation = "";
 
@@ -181,15 +180,13 @@ public class CollisionsHandler : MonoBehaviour {
 
             if (entityPrefab.tag == "VM") {
                 if (collisionEntity.tag == "Player") {
-                    // BUSTED
                     GameObject cameraObject = GameObject.FindWithTag("MainCamera");
-                    cameraObject.GetComponent<CameraFollow>().enabled = false;
+                    cameraObject.GetComponent<CameraFollow>().follow = 1;
+                    // Vector3 cameraPos = cameraObject.transform.position; // = new Vector3 (17.75f, 0f, -10f);
+                    // Vector3 targetPosition = new Vector3(entityPrefab.transform.position.x, -2.6f, -10f);
                     
-                    Vector3 cameraPos = cameraObject.transform.position; // = new Vector3 (17.75f, 0f, -10f);
-                    Vector3 targetPosition = new Vector3(entityPrefab.transform.position.x, -2.6f, -10f);
-                    
-                    cameraObject.transform.position = Vector3.Lerp(cameraPos, targetPosition, 0.3f);
-                    cameraObject.GetComponent<Camera>().orthographicSize = zoom;
+                    // cameraObject.transform.position = Vector3.Lerp(cameraPos, targetPosition, 0.3f);
+                    // cameraObject.GetComponent<Camera>().orthographicSize = zoom;
                 }
             }
         } catch (Exception e) {

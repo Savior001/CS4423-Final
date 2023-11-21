@@ -9,6 +9,7 @@ public class PlayerInputHandler : MonoBehaviour {
     [SerializeField] ProjectileSpawner projectileSpawner;
     [SerializeField] GameObject superiorObject;
     [SerializeField] int phase = 1;
+    [SerializeField] float stopPlayerPos = 17f;
     GameObject playerObject;
     // private Movement movement;
     // private FallingPapersEffect fpe;
@@ -36,24 +37,26 @@ public class PlayerInputHandler : MonoBehaviour {
         // }
 
         try {
-            if (Input.GetKey(KeyCode.A)) {
-                movement.Move(new Vector3(-1, 0, 0));
-                fpe.ActivateEffect(new Vector3(-1, 0, 0));
-            } else if (Input.GetKey(KeyCode.D)) {
-                movement.Move(new Vector3(1, 0, 0));
-                fpe.ActivateEffect(new Vector3(1, 0, 0));
-            } else {
-                movement.Stop();
-                fpe.ActivateEffect(Vector3.zero);
-            }
+            if (playerObject.transform.position.x < stopPlayerPos) {
+                if (Input.GetKey(KeyCode.A)) {
+                    movement.Move(new Vector3(-1, 0, 0));
+                    fpe.ActivateEffect(new Vector3(-1, 0, 0));
+                } else if (Input.GetKey(KeyCode.D)) {
+                    movement.Move(new Vector3(1, 0, 0));
+                    fpe.ActivateEffect(new Vector3(1, 0, 0));
+                } else {
+                    movement.Stop();
+                    fpe.ActivateEffect(Vector3.zero);
+                }
 
-            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) {
-                movement.Jump();
-            }
+                if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) {
+                    movement.Jump();
+                }
 
-            if (phase == 2) {
-                if (Input.GetMouseButtonDown(0)) {
-                    projectileSpawner.ShootStaple(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+                if (phase == 2) {
+                    if (Input.GetMouseButtonDown(0)) {
+                        projectileSpawner.ShootStaple(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+                    }
                 }
             }
         } catch (Exception e) {

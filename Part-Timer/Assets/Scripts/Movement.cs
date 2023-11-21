@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour {
     [SerializeField] LayerMask groundMask;
     [SerializeField] LayerMask wallWask;
     [SerializeField] Transform body;
+    [SerializeField] float stopPlayerPos = 17f;
     Rigidbody2D rb;
     private bool onWall;
     private bool wallSlide => onWall && !onGround && rb.velocity.y < 0f;
@@ -31,10 +32,11 @@ public class Movement : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    void Start() {
-    }
-
     void FixedUpdate() {
+        if (transform.position.x >= stopPlayerPos) {
+            // vending machine animation trigger
+        }
+
         previousClipName = animatorClipName;
         animatorClipInfo = animator.GetCurrentAnimatorClipInfo(0);
         animatorClipName = animatorClipInfo[0].clip.name;
