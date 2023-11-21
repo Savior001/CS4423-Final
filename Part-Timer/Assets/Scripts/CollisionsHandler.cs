@@ -15,8 +15,7 @@ public class CollisionsHandler : MonoBehaviour {
     Animator animator;
     public GameInfoSO gameInfoSO;
     private int debugCount = 0;
-    private float zoom = 0f;
-    private int zoomTransistion = 0;
+    private float zoom = 2.25f;
     float damage = 0;
     string previousAnimation = "";
 
@@ -83,12 +82,6 @@ public class CollisionsHandler : MonoBehaviour {
         //         animator.SetBool("CTC", false);
         //     }
         // }
-    }
-
-    void Update() {
-        if (zoomTransistion == 1 && zoom < 2.19f) {
-            zoom += 0.1f;
-        }
     }
 
     void OnTriggerEnter2D(Collider2D collisionEntity) {
@@ -189,12 +182,14 @@ public class CollisionsHandler : MonoBehaviour {
             if (entityPrefab.tag == "VM") {
                 if (collisionEntity.tag == "Player") {
                     // BUSTED
-                    // GameObject cameraObject = GameObject.FindWithTag("MainCamera");
-                    // cameraObject.GetComponent<CameraFollow>().enabled = false;
-
-                    // Vector3 targetPosition = new Vector3(entityPrefab.transform.position.x, 0, -10);
-                    // cameraObject.GetComponent<Transform>().position = Vector3.Lerp(cameraObject.transform.position, targetPosition, 0.3f);
-                    // cameraObject.GetComponent<Camera>().orthographicSize = zoom;
+                    GameObject cameraObject = GameObject.FindWithTag("MainCamera");
+                    cameraObject.GetComponent<CameraFollow>().enabled = false;
+                    
+                    Vector3 cameraPos = cameraObject.transform.position; // = new Vector3 (17.75f, 0f, -10f);
+                    Vector3 targetPosition = new Vector3(entityPrefab.transform.position.x, -2.6f, -10f);
+                    
+                    cameraObject.transform.position = Vector3.Lerp(cameraPos, targetPosition, 0.3f);
+                    cameraObject.GetComponent<Camera>().orthographicSize = zoom;
                 }
             }
         } catch (Exception e) {

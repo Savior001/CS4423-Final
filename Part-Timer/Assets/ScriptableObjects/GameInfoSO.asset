@@ -24,5 +24,5 @@ MonoBehaviour:
   playerHP: 100
   playerPP: 0
   playerSpeed: 6
-  playerPower: 1
+  playerPower: 1.5
   playerScore: 0
