@@ -11,14 +11,16 @@ public class GameInfoSO : ScriptableObject {
     [SerializeField] private float initialPlayerPP = 0;
     [SerializeField] private float initialPlayerSpeed = 6;
     [SerializeField] private float initialPlayerPower = 1f;
-    [SerializeField] private int initialPlayerScore = 0;
+    [SerializeField] private float initialPlayerScore = 0;
+    [SerializeField] private int initialSelectedVMItem = 0;
     public int timer = 0;
     public int phase = 1;
     public int playerHP = 100;
     public float playerPP = 0;
     public float playerSpeed = 5;
     public float playerPower = 1;
-    public int playerScore = 0;
+    public float playerScore = 0;
+    public int selectedVMItem = 0;
 
     // private void OnEnable() => hideFlags = HideFlags.DontUnloadUnusedAsset;
     void Awake() {
@@ -36,19 +38,20 @@ public class GameInfoSO : ScriptableObject {
         playerPP = initialPlayerPP;
         playerSpeed = initialPlayerSpeed;
         playerScore = initialPlayerScore;
+        selectedVMItem = initialSelectedVMItem;
     }
 
     public void DealDamageToPlayer(int damage) {
         playerHP -= damage;
     }
 
-    public void AddScore(int p) {
+    public void AddScore(float p) {
         playerScore += p;
     }
 
-    public void DeductScore(int p) {
+    public void DeductScore(float p) {
         if (playerScore - p < 0) {
-            playerScore = 0;
+            playerScore = 0f;
         } else {
             playerScore -= p;
         }
@@ -58,5 +61,9 @@ public class GameInfoSO : ScriptableObject {
         playerPP += 1f;
         playerSpeed = initialPlayerSpeed + (playerPP * 0.25f);
         playerPower = initialPlayerPower + (playerPP * 0.25f);
+    }
+
+    public void SelectVMItem(int i) {
+        selectedVMItem = i;
     }
 }

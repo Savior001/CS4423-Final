@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5815669441247494056}
   - component: {fileID: 413330786523951815}
   - component: {fileID: 7671021406642128970}
+  - component: {fileID: 6832447260811876850}
   m_Layer: 5
   m_Name: ItemSelect
   m_TagString: Untagged
@@ -120,7 +121,36 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 413330786523951815}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6832447260811876850}
+        m_TargetAssemblyTypeName: ItemSelectHandler, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6832447260811876850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5566944894594633443}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe891a9dbbd1c642afb152a7335efd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonObject: {fileID: 5566944894594633443}
+  text: {fileID: 0}
+  gameInfoSO: {fileID: 11400000, guid: 89be9e7458d49b74f9d57e6ebf2d2a35, type: 2}
+  vmItemInfoSO: {fileID: 11400000, guid: 232518c5b1ee6a54a9073224c2b1ba39, type: 2}
+  image: {fileID: 413330786523951815}
 --- !u!1 &8185659231359312205
 GameObject:
   m_ObjectHideFlags: 0

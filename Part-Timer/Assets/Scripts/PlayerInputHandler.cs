@@ -15,6 +15,7 @@ public class PlayerInputHandler : MonoBehaviour {
     // private FallingPapersEffect fpe;
     // private ProjectileSpawner projectileSpawner;
     private int debugCount = 0;
+    public GameInfoSO gameInfoSO;
 
     void Awake() {
         playerObject = GameObject.FindWithTag("Player").gameObject;
@@ -24,7 +25,7 @@ public class PlayerInputHandler : MonoBehaviour {
 
     void Update() {
         try {
-            phase = superiorObject.GetComponent<SuperiorMovement>().phase;
+            phase = gameInfoSO.phase;
         } catch (Exception e) {
             if (debugCount == 0) {
                 Debug.Log("Error on Update() call, boss is kill: " + e);

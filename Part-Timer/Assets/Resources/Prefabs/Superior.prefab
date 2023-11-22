@@ -106,7 +106,9 @@ MonoBehaviour:
   timer: 1
   moveSpeedMultiplier: 1
   timerStop: 30
+  transitionTime: 0.6
   phase: 1
+  gameInfoSO: {fileID: 11400000, guid: 89be9e7458d49b74f9d57e6ebf2d2a35, type: 2}
 --- !u!50 &-6065386978890630791
 Rigidbody2D:
   serializedVersion: 4

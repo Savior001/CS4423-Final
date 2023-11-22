@@ -15,6 +15,7 @@ public class SuperiorMovement : MonoBehaviour {
     float runningTime = 0f;
     bool updatePhase = true;
     public int phase = 1;
+    public GameInfoSO gameInfoSO;
 
     void Start() {
         StartCoroutine(TimerRoutine());
@@ -37,7 +38,9 @@ public class SuperiorMovement : MonoBehaviour {
 
     void FixedUpdate() {
         runningTime = (runningTime + Time.deltaTime) * moveSpeedMultiplier;
-        if (timer > timerStop) { phase = 2; }
+        if (timer > timerStop) {
+            phase = 2;
+        }
 
         if (phase == 1) {
             Movement();
@@ -67,6 +70,7 @@ public class SuperiorMovement : MonoBehaviour {
 
     void MoveToPhaseTwo() {
         updatePhase = false;
+        gameInfoSO.phase = phase;
         xPos = 7.5f;
         newPos = new Vector3(xPos, 0f, transform.position.z);
         transform.position = Vector3.Lerp(transform.position, newPos, Time.deltaTime * transitionTime);
