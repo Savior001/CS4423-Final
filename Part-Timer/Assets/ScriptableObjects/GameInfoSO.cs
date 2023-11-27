@@ -81,4 +81,8 @@ public class GameInfoSO : ScriptableObject {
             Debug.Log("-Just because lol\n$ " + playerMoney);
         }
     }
+
+    public void NextLevel() {
+        playerScore = initialPlayerScore;
+    }
 }

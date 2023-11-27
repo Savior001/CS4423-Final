@@ -14,13 +14,15 @@ public class BuyItemHandler : MonoBehaviour {
 
     public void BuyItem() {
         if (gameInfoSO.playerMoney > 0 && gameInfoSO.selectedVMItem > 0) {
-            if (gameInfoSO.playerMoney - itemSelectHandler.vmItems[gameInfoSO.selectedVMItem - 1].price > 0) {
+            if (gameInfoSO.playerMoney > itemSelectHandler.vmItems[gameInfoSO.selectedVMItem - 1].price) {
                 if (gameInfoSO.playerHP + itemSelectHandler.vmItems[gameInfoSO.selectedVMItem - 1].value > 100) {
                     gameInfoSO.playerHP = 100;
                 } else {
                     gameInfoSO.playerHP += itemSelectHandler.vmItems[gameInfoSO.selectedVMItem - 1].value;
                 }
-                gameInfoSO.playerMoney -= itemSelectHandler.vmItems[gameInfoSO.selectedVMItem - 1].price;
+                // gameInfoSO.playerMoney -= itemSelectHandler.vmItems[gameInfoSO.selectedVMItem - 1].price;
+                gameInfoSO.playerMoney -= (Mathf.Round((itemSelectHandler.vmItems[gameInfoSO.selectedVMItem - 1].price) * 100f)) / 100.0f;
+                itemSelectHandler.UpdateText();
             } else {
                 vmText.text = "Smell like BROKE in here!";
                 Debug.Log("Smell like BROKE!");

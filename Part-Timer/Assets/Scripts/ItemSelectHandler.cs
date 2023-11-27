@@ -86,7 +86,7 @@ public class ItemSelectHandler : MonoBehaviour, IPointerExitHandler, IPointerEnt
         image.color = new Color(color.r, color.g, color.b, 0f);
     }
 
-    void UpdateText() {
+    public void UpdateText() {
         if (gameInfoSO.selectedVMItem > 0) {
             VMItem item = vmItems[gameInfoSO.selectedVMItem - 1];
             text.text = item.name + item.desc;

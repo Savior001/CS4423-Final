@@ -21,6 +21,7 @@ public class SceneUpdateHandler : MonoBehaviour {
 
     public void NextLevel() {
         MovePlayer();
+        gameInfoSO.NextLevel();
         SceneManager.LoadScene("GameScene");
     }
 
