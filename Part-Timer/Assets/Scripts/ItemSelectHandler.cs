@@ -54,6 +54,12 @@ public class ItemSelectHandler : MonoBehaviour, IPointerExitHandler, IPointerEnt
         if (!onHover && gameInfoSO.selectedVMItem != int.Parse(buttonObject.name)) {
             image.color = new Color(color.r, color.g, color.b, 0f);
         }
+
+        if (gameInfoSO.selectedVMItem == 0) {
+            vmUIPriceText.transform.parent.GetComponent<Image>().enabled = false;
+        } else {
+            vmUIPriceText.transform.parent.GetComponent<Image>().enabled = true;
+        }
     }
 
     public void OnClick() {
@@ -84,7 +90,7 @@ public class ItemSelectHandler : MonoBehaviour, IPointerExitHandler, IPointerEnt
         if (gameInfoSO.selectedVMItem > 0) {
             VMItem item = vmItems[gameInfoSO.selectedVMItem - 1];
             text.text = item.name + item.desc;
-            priceText.text = "$" + item.price;
+            priceText.text = "$" + item.price.ToString("0.00");
             vmUIPriceText.text = priceText.text;
         } else {
             text.text = "Could really go for a snack...";
