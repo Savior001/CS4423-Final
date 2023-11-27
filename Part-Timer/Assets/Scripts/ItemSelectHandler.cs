@@ -23,11 +23,14 @@ public class ItemSelectHandler : MonoBehaviour, IPointerExitHandler, IPointerEnt
 
     [SerializeField] GameObject buttonObject;
     [SerializeField] Text text;
+    [SerializeField] Text priceText;
+    [SerializeField] Text vmUIPriceText;
     public GameInfoSO gameInfoSO;
     public Image image;
     public List<VMItem> vmItems = new List<VMItem>();
     public static ItemSelectHandler singleton;
     private Color color;
+    private bool onHover = false;
 
     void Awake() {
         if(singleton == null) {
@@ -47,6 +50,12 @@ public class ItemSelectHandler : MonoBehaviour, IPointerExitHandler, IPointerEnt
         }
     }
 
+    void FixedUpdate() {
+        if (!onHover && gameInfoSO.selectedVMItem != int.Parse(buttonObject.name)) {
+            image.color = new Color(color.r, color.g, color.b, 0f);
+        }
+    }
+
     public void OnClick() {
         image.color = new Color(1, 1, 1, 255f);
         gameInfoSO.selectedVMItem = int.Parse(buttonObject.name);
@@ -54,12 +63,14 @@ public class ItemSelectHandler : MonoBehaviour, IPointerExitHandler, IPointerEnt
     }
 
     public void OnPointerEnter(PointerEventData eventData) {
+        onHover = true;
         if (gameInfoSO.selectedVMItem != int.Parse(buttonObject.name)) {
             image.color = new Color(color.r, color.g, color.b, 255f);
         }
     }
 
     public void OnPointerExit(PointerEventData eventData) {
+        onHover = false;
         if (gameInfoSO.selectedVMItem != int.Parse(buttonObject.name)) {
             image.color = new Color(color.r, color.g, color.b, 0f);
         }
@@ -73,8 +84,12 @@ public class ItemSelectHandler : MonoBehaviour, IPointerExitHandler, IPointerEnt
         if (gameInfoSO.selectedVMItem > 0) {
             VMItem item = vmItems[gameInfoSO.selectedVMItem - 1];
             text.text = item.name + item.desc;
+            priceText.text = "$" + item.price;
+            vmUIPriceText.text = priceText.text;
         } else {
             text.text = "Could really go for a snack...";
+            priceText.text = "";
+            vmUIPriceText.text = priceText.text;
         }
     }
 

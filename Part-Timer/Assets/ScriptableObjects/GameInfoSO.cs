@@ -73,10 +73,11 @@ public class GameInfoSO : ScriptableObject {
     }
 
     public void UpdatePlayerMoney() {
-        playerMoney = playerScore - (playerScore * .9f);
+        float amount = playerScore - (playerScore * .9f);
+        playerMoney = (Mathf.Round(amount * 100f)) / 100.0f;
         Debug.Log("-Taxes\n-401k\n-Health Coverage\n$ " + playerMoney);
         if (playerMoney > 15f) {
-            playerMoney *= .05f;
+            playerMoney = (Mathf.Round((playerMoney * .05f) * 100f)) / 100.0f;
             Debug.Log("-Just because lol\n$ " + playerMoney);
         }
     }
