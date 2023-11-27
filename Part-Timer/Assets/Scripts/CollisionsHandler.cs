@@ -157,7 +157,6 @@ public class CollisionsHandler : MonoBehaviour {
                         Debug.Log("A winner is you!");
                         GameObject wallObject = GameObject.FindWithTag("Wall");
                         wallObject.GetComponent<BoxCollider2D>().isTrigger = true;
-                        gameInfoSO.phase = 3;
                         // canvasFadeHandler.FadeIn();
                     }
 
@@ -171,6 +170,8 @@ public class CollisionsHandler : MonoBehaviour {
             if (entityPrefab.tag == "Checkpoint") {
                 // Debug.Log("[" + entityPrefab.tag + "] collision with " + collisionEntity.tag);
                 if (collisionEntity.tag == "Player") {
+                    gameInfoSO.UpdatePhase(3);
+                    gameInfoSO.UpdatePlayerMoney();
                     GameObject weaponObject = GameObject.FindWithTag("Weapon");
                     weaponObject.SetActive(false);
                     GameObject cameraObject = GameObject.FindWithTag("MainCamera");

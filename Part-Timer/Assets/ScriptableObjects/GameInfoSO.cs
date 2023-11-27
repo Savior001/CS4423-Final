@@ -8,18 +8,19 @@ public class GameInfoSO : ScriptableObject {
     [SerializeField] private int initialTimer = 0;
     [SerializeField] private int initialPhase = 0;
     [SerializeField] private int initialPlayerHP = 100;
-    [SerializeField] private float initialPlayerPP = 0;
+    [SerializeField] private float initialPlayerPP = 0f;
     [SerializeField] private float initialPlayerSpeed = 6;
     [SerializeField] private float initialPlayerPower = 1f;
-    [SerializeField] private float initialPlayerScore = 0;
+    [SerializeField] private float initialPlayerScore = 0f;
     [SerializeField] private int initialSelectedVMItem = 0;
     public int timer = 0;
     public int phase = 1;
     public int playerHP = 100;
-    public float playerPP = 0;
-    public float playerSpeed = 5;
-    public float playerPower = 1;
-    public float playerScore = 0;
+    public float playerPP = 0f;
+    public float playerSpeed = 5f;
+    public float playerPower = 1f;
+    public float playerScore = 0f;
+    public float playerMoney = 0f;
     public int selectedVMItem = 0;
 
     // private void OnEnable() => hideFlags = HideFlags.DontUnloadUnusedAsset;
@@ -65,5 +66,18 @@ public class GameInfoSO : ScriptableObject {
 
     public void SelectVMItem(int i) {
         selectedVMItem = i;
+    }
+
+    public void UpdatePhase(int p) {
+        phase = p;
+    }
+
+    public void UpdatePlayerMoney() {
+        playerMoney = playerScore - (playerScore * .9f);
+        Debug.Log("-Taxes\n-401k\n-Health Coverage\n$ " + playerMoney);
+        if (playerMoney > 15f) {
+            playerMoney *= .05f;
+            Debug.Log("-Just because lol\n$ " + playerMoney);
+        }
     }
 }

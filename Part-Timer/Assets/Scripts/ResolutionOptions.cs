@@ -34,10 +34,14 @@ public class ResolutionOptions : MonoBehaviour {
     public void ChangeResolution() {
         Screen.SetResolution(resolutions[resolutionDropdown.value].width, resolutions[resolutionDropdown.value].height, toggle.isOn);
         PlayerPrefs.SetInt("resolution selection", resolutionDropdown.value);
+    }
 
+    public void ChangeFullscreen(){
+        Screen.SetResolution(resolutions[resolutionDropdown.value].width,resolutions[resolutionDropdown.value].height, toggle.isOn);
         if (toggle.isOn) {
             PlayerPrefs.SetInt("fullscreen", 0);
         } else {
+            Debug.Log("fullscreen off");
             PlayerPrefs.SetInt("fullscreen", 1);
         }
     }

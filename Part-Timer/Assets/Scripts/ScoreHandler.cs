@@ -9,6 +9,10 @@ public class ScoreHandler : MonoBehaviour {
     public static ScoreHandler singleton;
 
     void Update() {
-        score.text = gameInfoSO.playerScore.ToString();
+        if (gameInfoSO.phase == 3) {
+            score.text = "$" + gameInfoSO.playerMoney.ToString();
+        } else {
+            score.text = gameInfoSO.playerScore.ToString();
+        }
     }
 }
