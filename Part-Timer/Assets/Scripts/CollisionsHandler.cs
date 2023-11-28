@@ -184,13 +184,12 @@ public class CollisionsHandler : MonoBehaviour {
                 if (collisionEntity.tag == "Player") {
                     GameObject cameraObject = GameObject.FindWithTag("MainCamera");
                     cameraObject.GetComponent<CameraFollow>().follow = 1;
-                    GameObject vmPromptObject = GameObject.Find("VMPrompt");
-                    vmPromptObject.SetActive(true);
-                    // Vector3 cameraPos = cameraObject.transform.position; // = new Vector3 (17.75f, 0f, -10f);
-                    // Vector3 targetPosition = new Vector3(entityPrefab.transform.position.x, -2.6f, -10f);
-                    
-                    // cameraObject.transform.position = Vector3.Lerp(cameraPos, targetPosition, 0.3f);
-                    // cameraObject.GetComponent<Camera>().orthographicSize = zoom;
+                    GameObject vmCanvasObj = GameObject.FindWithTag("VMCanvas");
+                    GameObject vmPromptObj = vmCanvasObj.transform.Find("VMPrompt").gameObject;
+                    vmCanvasObj.GetComponent<Canvas>().enabled = true;
+                    vmPromptObj.GetComponent<SpriteRenderer>().enabled = true;
+                    // GameObject vmPromptObject = GameObject.Find("VMPrompt");
+                    // vmPromptObject.SetActive(true);
                 }
             }
         } catch (Exception e) {

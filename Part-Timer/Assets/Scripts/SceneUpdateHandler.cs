@@ -23,6 +23,10 @@ public class SceneUpdateHandler : MonoBehaviour {
         MovePlayer();
         gameInfoSO.NextLevel();
         SceneManager.LoadScene("GameScene");
+        GameObject vmCanvasObj = GameObject.FindWithTag("VMCanvas");
+        GameObject vmPromptObj = vmCanvasObj.transform.Find("VMPrompt").gameObject;
+        vmCanvasObj.GetComponent<Canvas>().enabled = false;
+        vmPromptObj.GetComponent<SpriteRenderer>().enabled = false;
     }
 
     public void MainMenu() {

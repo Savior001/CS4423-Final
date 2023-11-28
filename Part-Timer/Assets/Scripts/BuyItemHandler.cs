@@ -14,7 +14,7 @@ public class BuyItemHandler : MonoBehaviour {
 
     public void BuyItem() {
         if (gameInfoSO.playerMoney > 0 && gameInfoSO.selectedVMItem > 0) {
-            if (gameInfoSO.playerMoney > itemSelectHandler.vmItems[gameInfoSO.selectedVMItem - 1].price) {
+            if (gameInfoSO.playerMoney >= itemSelectHandler.vmItems[gameInfoSO.selectedVMItem - 1].price) {
                 if (gameInfoSO.playerHP + itemSelectHandler.vmItems[gameInfoSO.selectedVMItem - 1].value > 100) {
                     gameInfoSO.playerHP = 100;
                 } else {

@@ -45,9 +45,9 @@ public class ItemSelectHandler : MonoBehaviour, IPointerExitHandler, IPointerEnt
             
         }
 
-        for (int i = 1; i < vmItems.Count; i++) {
-            Debug.Log(vmItems[i].name + vmItems[i].desc);
-        }
+        // for (int i = 1; i < vmItems.Count; i++) {
+        //     Debug.Log(vmItems[i].name + vmItems[i].desc);
+        // }
     }
 
     void FixedUpdate() {

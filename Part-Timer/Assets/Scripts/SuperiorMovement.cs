@@ -19,10 +19,10 @@ public class SuperiorMovement : MonoBehaviour {
         [SerializeField] public float timerStop;
     }
     [SerializeField] public float health = 100f;
-    [SerializeField] float speed = 2f;
+    // [SerializeField] float speed = 2f;
     [SerializeField] float xPos;
     [SerializeField] float timer = 0f;
-    [SerializeField] float moveSpeedMultiplier = 1f;
+    // [SerializeField] float moveSpeedMultiplier = 1f;
     [SerializeField] public int timerStop = 10;
     [SerializeField] float transitionTime = 0.6f;
     Vector3 newPos;

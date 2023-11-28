@@ -10,7 +10,7 @@ public class ScoreHandler : MonoBehaviour {
 
     void Update() {
         if (gameInfoSO.phase == 3) {
-            score.text = "$" + gameInfoSO.playerMoney.ToString();
+            score.text = "$" + gameInfoSO.playerMoney.ToString("0.00");
         } else {
             score.text = gameInfoSO.playerScore.ToString();
         }
