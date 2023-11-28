@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityPrefab: {fileID: 6364991461410181153}
+  gameInfoSO: {fileID: 0}
 --- !u!114 &-9104235592583603724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -113,8 +114,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityPrefab: {fileID: 6364991461410181153}
-  objectSpawner: {fileID: 0}
-  superiorObject: {fileID: 0}
   speed: 5
 --- !u!61 &8798766595914047280
 BoxCollider2D:

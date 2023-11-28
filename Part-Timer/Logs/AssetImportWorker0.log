@@ -1038,3 +1038,177 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
   custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 2693.856783 seconds.
+  path: Assets/Sprites/files1.png
+  artifactKey: Guid(83ebc9028d91e514a8decb670c60c2e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/files1.png using Guid(83ebc9028d91e514a8decb670c60c2e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4c7ae7fa367bcb6c756dd08db3eeac47') in 0.017812 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 2
+========================================================================
+Received Import Request.
+  Time since last request: 48.170208 seconds.
+  path: Assets/Sprites/files1.png
+  artifactKey: Guid(83ebc9028d91e514a8decb670c60c2e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/files1.png using Guid(83ebc9028d91e514a8decb670c60c2e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8895b415e0233d0cf58ded0a4eeef922') in 0.002257 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 17.802213 seconds.
+  path: Assets/Sprites/files1.png
+  artifactKey: Guid(83ebc9028d91e514a8decb670c60c2e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Sprites/files1.png using Guid(83ebc9028d91e514a8decb670c60c2e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bdb4f9a832908183c728b12a4854cd39') in 0.002746 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 7
+========================================================================
+Received Import Request.
+  Time since last request: 17.958762 seconds.
+  path: Assets/Resources/Prefabs/Superior.prefab
+  artifactKey: Guid(839d4f7fc06ea4a4fac922331e5ba099) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Superior.prefab using Guid(839d4f7fc06ea4a4fac922331e5ba099) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bdc5db8557cc42b610b9e02d95516c2f') in 0.006550 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 27
+========================================================================
+Received Import Request.
+  Time since last request: 30.563154 seconds.
+  path: Assets/Animation/PlayerController.controller
+  artifactKey: Guid(77641ecca9c1b784387bdf040406d711) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/PlayerController.controller using Guid(77641ecca9c1b784387bdf040406d711) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a75f96bd72e75b518dee37771962c1dc') in 0.057081 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 30
+========================================================================
+Received Import Request.
+  Time since last request: 2.053009 seconds.
+  path: Assets/Animation/PlayerShootingController.controller
+  artifactKey: Guid(27de0acfc988c48c4b50db5a0e52fac2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/PlayerShootingController.controller using Guid(27de0acfc988c48c4b50db5a0e52fac2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b849f22cac4174294d9fc461293e827') in 0.005193 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 28
+========================================================================
+Received Import Request.
+  Time since last request: 64.553408 seconds.
+  path: Assets/Animation/FilesController.controller
+  artifactKey: Guid(f8c6271930416ef45b199add2cd511c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/FilesController.controller using Guid(f8c6271930416ef45b199add2cd511c4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c23e005632df4fad5884e940019baef8') in 0.001369 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 25.146567 seconds.
+  path: Assets/Animation/Files1.anim
+  artifactKey: Guid(1e7e72ff6566c954da361f63a8ce9c04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Animation/Files1.anim using Guid(1e7e72ff6566c954da361f63a8ce9c04) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b08c8c0e17d447b06d5ef1c8308884b5') in 0.001498 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 1
+========================================================================
+Received Import Request.
+  Time since last request: 85.671753 seconds.
+  path: Assets/Resources/Prefabs/ObjectSpawner.prefab
+  artifactKey: Guid(8eda69f82feddbd47aa694e817346995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/ObjectSpawner.prefab using Guid(8eda69f82feddbd47aa694e817346995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6919726f0be692bf6cc361a82196a7f2') in 0.008757 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 28
+========================================================================
+Received Import Request.
+  Time since last request: 0.000024 seconds.
+  path: Assets/Resources/Prefabs/Weapon.prefab
+  artifactKey: Guid(0cb7632e8cffb4da9bf2f1de457ff5e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Weapon.prefab using Guid(0cb7632e8cffb4da9bf2f1de457ff5e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '00b24eef2c70d16d82731dc0b349e0f8') in 0.006220 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 22
+========================================================================
+Received Import Request.
+  Time since last request: 0.000027 seconds.
+  path: Assets/Resources/Prefabs/PlayerShooting Variant.prefab
+  artifactKey: Guid(88ba3aa14088948b99f94755e0863a2a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/PlayerShooting Variant.prefab using Guid(88ba3aa14088948b99f94755e0863a2a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ad1e8c236a7d31b348e0f91cc9df07d3') in 0.009376 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 50
+========================================================================
+Received Import Request.
+  Time since last request: 0.000014 seconds.
+  path: Assets/Resources/Prefabs/ProjectileSpawner Variant.prefab
+  artifactKey: Guid(9dbfb0c76cedc482ea89c583d85161e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/ProjectileSpawner Variant.prefab using Guid(9dbfb0c76cedc482ea89c583d85161e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '55a15ec054a8b2115599982aae0707bd') in 0.003577 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 14
+========================================================================
+Received Import Request.
+  Time since last request: 15.094222 seconds.
+  path: Assets/Resources/Prefabs/Player.prefab
+  artifactKey: Guid(e194e81a9c7cdca4cb2afa97ffeca799) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Player.prefab using Guid(e194e81a9c7cdca4cb2afa97ffeca799) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9bae4be6a495ab10c9fc8169220e31ee') in 0.007487 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 39
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Resources/Prefabs/Weapon.prefab
+  artifactKey: Guid(0cb7632e8cffb4da9bf2f1de457ff5e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Weapon.prefab using Guid(0cb7632e8cffb4da9bf2f1de457ff5e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ebd63900d40155b1e564b0a6fc082a25') in 0.005097 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 23
+========================================================================
+Received Import Request.
+  Time since last request: 0.000017 seconds.
+  path: Assets/Resources/Prefabs/ProjectileSpawner Variant.prefab
+  artifactKey: Guid(9dbfb0c76cedc482ea89c583d85161e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/ProjectileSpawner Variant.prefab using Guid(9dbfb0c76cedc482ea89c583d85161e6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '08b78b430f068edbcab5eadfdf82fbf3') in 0.002572 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 15
+========================================================================
+Received Import Request.
+  Time since last request: 16.645689 seconds.
+  path: Assets/Resources/Prefabs/PlayerShooting Variant.prefab
+  artifactKey: Guid(88ba3aa14088948b99f94755e0863a2a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/PlayerShooting Variant.prefab using Guid(88ba3aa14088948b99f94755e0863a2a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5eb7084d837f170192e61d0c5f52bf4b') in 0.006246 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 53
+========================================================================
+Received Import Request.
+  Time since last request: 0.000012 seconds.
+  path: Assets/Resources/Prefabs/SuperiorPhaseTwo Variant.prefab
+  artifactKey: Guid(2aff6f3ea32c32a49aa9e3ddce1e5539) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/SuperiorPhaseTwo Variant.prefab using Guid(2aff6f3ea32c32a49aa9e3ddce1e5539) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf67e64ec8becc7f3501ecfbb94b83ff') in 0.004795 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 35
+========================================================================
+Received Import Request.
+  Time since last request: 19.231111 seconds.
+  path: Assets/Resources/Prefabs/Player.prefab
+  artifactKey: Guid(e194e81a9c7cdca4cb2afa97ffeca799) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Player.prefab using Guid(e194e81a9c7cdca4cb2afa97ffeca799) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1dfe602e8506f009ce5c022ab01da54c') in 0.006286 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 39
+========================================================================
+Received Import Request.
+  Time since last request: 0.000013 seconds.
+  path: Assets/Resources/Prefabs/SuperiorPhaseTwo Variant.prefab
+  artifactKey: Guid(2aff6f3ea32c32a49aa9e3ddce1e5539) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/SuperiorPhaseTwo Variant.prefab using Guid(2aff6f3ea32c32a49aa9e3ddce1e5539) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '849632cbdc989fe9678c3430d89e3904') in 0.005696 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 35
+========================================================================
+Received Import Request.
+  Time since last request: 25.260893 seconds.
+  path: Assets/Resources/Prefabs/PlayerShooting Variant.prefab
+  artifactKey: Guid(88ba3aa14088948b99f94755e0863a2a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/PlayerShooting Variant.prefab using Guid(88ba3aa14088948b99f94755e0863a2a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '43c2ad929be41d2082265907fae0aa80') in 0.006058 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 50
+========================================================================
+Received Import Request.
+  Time since last request: 0.000015 seconds.
+  path: Assets/Resources/Prefabs/Weapon.prefab
+  artifactKey: Guid(0cb7632e8cffb4da9bf2f1de457ff5e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Resources/Prefabs/Weapon.prefab using Guid(0cb7632e8cffb4da9bf2f1de457ff5e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c9c4835d479b6241b3b956ae064ef0d1') in 0.004603 seconds
+Number of updated asset objects reloaded before import = 0
+Number of asset objects unloaded after import = 22
+Editor requested this worker to shutdown with reason: Scaling down because of idle timeout
+TcpMessagingSession - receive error
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
+AssetImportWorker is now disconnected from the server
+Process exiting
+Exiting without the bug reporter. Application will terminate with return code 0
