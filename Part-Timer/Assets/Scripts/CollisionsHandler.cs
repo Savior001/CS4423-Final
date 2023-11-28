@@ -150,9 +150,9 @@ public class CollisionsHandler : MonoBehaviour {
                     SuperiorMovement superiorObject = collisionEntity.gameObject.GetComponent<SuperiorMovement>();
                     damage = projectileSpawner.getProjectilePower();
                     superiorObject.DealDamage(damage);
-                    Debug.Log("Boss lost [" + damage + "] hp. \nBoss at [" + superiorObject.health + "] hp.");
+                    Debug.Log("Boss lost [" + damage + "] hp. \nBoss at [" + superiorObject.superior.health + "] hp.");
                     
-                    if (superiorObject.health <= 0) {
+                    if (superiorObject.superior.health <= 0) {
                         Destroy(collisionEntity.gameObject);
                         Debug.Log("A winner is you!");
                         GameObject wallObject = GameObject.FindWithTag("Wall");

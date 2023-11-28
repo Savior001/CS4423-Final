@@ -13,6 +13,7 @@ public class GameInfoSO : ScriptableObject {
     [SerializeField] private float initialPlayerPower = 1f;
     [SerializeField] private float initialPlayerScore = 0f;
     [SerializeField] private int initialSelectedVMItem = 0;
+    [SerializeField] private int initialLevel = 1;
     public int timer = 0;
     public int phase = 1;
     public int playerHP = 100;
@@ -22,6 +23,7 @@ public class GameInfoSO : ScriptableObject {
     public float playerScore = 0f;
     public float playerMoney = 0f;
     public int selectedVMItem = 0;
+    public int level = 1;
 
     // private void OnEnable() => hideFlags = HideFlags.DontUnloadUnusedAsset;
     void Awake() {
@@ -40,6 +42,7 @@ public class GameInfoSO : ScriptableObject {
         playerSpeed = initialPlayerSpeed;
         playerScore = initialPlayerScore;
         selectedVMItem = initialSelectedVMItem;
+        level = initialLevel;
     }
 
     public void DealDamageToPlayer(int damage) {
@@ -84,5 +87,7 @@ public class GameInfoSO : ScriptableObject {
 
     public void NextLevel() {
         playerScore = initialPlayerScore;
+        level += 1;
+        phase = 1;
     }
 }

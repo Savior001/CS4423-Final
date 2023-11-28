@@ -4,6 +4,20 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class SuperiorMovement : MonoBehaviour {
+    [System.Serializable]
+    public class Superior {
+        public Superior(float h, float s, float msm, float ts) {
+            health = h;
+            speed = s;
+            moveSpeedMultiplier = msm;
+            timerStop = ts;
+        }
+
+        [SerializeField] public float health;
+        [SerializeField] public float speed;
+        [SerializeField] public float moveSpeedMultiplier;
+        [SerializeField] public float timerStop;
+    }
     [SerializeField] public float health = 100f;
     [SerializeField] float speed = 2f;
     [SerializeField] float xPos;
@@ -16,8 +30,12 @@ public class SuperiorMovement : MonoBehaviour {
     bool updatePhase = true;
     public int phase = 1;
     public GameInfoSO gameInfoSO;
+    public SuperiorInfoSO superiorInfoSO;
+    public Superior superior;
 
     void Start() {
+        superior = SuperiorRandomizer();
+        superiorInfoSO.LoadSuperiorStats(superior.health, superior.speed, superior.moveSpeedMultiplier, superior.timerStop);
         StartCoroutine(TimerRoutine());
         xPos = Random.Range(-4.5f, 4.5f);
         newPos = new Vector3(xPos, transform.position.y, transform.position.z);
@@ -37,8 +55,8 @@ public class SuperiorMovement : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        runningTime = (runningTime + Time.deltaTime) * moveSpeedMultiplier;
-        if (timer > timerStop) {
+        runningTime = (runningTime + Time.deltaTime) * superior.moveSpeedMultiplier;
+        if (timer > superior.timerStop) {
             phase = 2;
         }
 
@@ -54,11 +72,11 @@ public class SuperiorMovement : MonoBehaviour {
     }
 
     void Movement() {
-        moveSpeedMultiplier += timer;
+        superior.moveSpeedMultiplier += timer;
         // runningTime = (runningTime + Time.deltaTime) * moveSpeedMultiplier;
 
         if (runningTime >= timer) {
-            transform.position = Vector3.Lerp(transform.position, newPos, Time.deltaTime * speed);
+            transform.position = Vector3.Lerp(transform.position, newPos, Time.deltaTime * superior.speed);
 
             if (Vector3.Distance(transform.position, newPos) <= 0.01f) {
                 xPos = Random.Range(-4.5f, 4.5f);
@@ -98,6 +116,17 @@ public class SuperiorMovement : MonoBehaviour {
     }
 
     public void DealDamage(float damage) {
-        health -= damage;
+        superior.health -= damage;
+        superiorInfoSO.DealDamage(damage);
+    }
+
+    public Superior SuperiorRandomizer() {
+        if (gameInfoSO.level == 1) {
+            return new Superior(Random.Range(100f, 200f), Random.Range(1.5f, 2f), Random.Range(.5f, 1f), Random.Range(50, 60));
+        } else if (gameInfoSO.level == 2) {
+            return new Superior(Random.Range(300f, 400f), Random.Range(2.5f, 3f), Random.Range(1.5f, 2f), Random.Range(65, 70));
+        } else {
+            return new Superior(Random.Range(500f, 700f), Random.Range(3.5f, 6f), Random.Range(2.5f, 3f), Random.Range(75, 80));
+        }
     }
 }

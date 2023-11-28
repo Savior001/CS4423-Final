@@ -4211,6 +4211,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8093325500202738215, guid: 839d4f7fc06ea4a4fac922331e5ba099, type: 3}
+      propertyPath: superiorInfoSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 4e02a402a254b3844b6449d0b69ad700, type: 2}
+    - target: {fileID: 8093325500202738215, guid: 839d4f7fc06ea4a4fac922331e5ba099, type: 3}
       propertyPath: transitionTime
       value: 0.1
       objectReference: {fileID: 0}
