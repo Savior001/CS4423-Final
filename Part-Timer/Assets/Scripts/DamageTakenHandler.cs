@@ -3,20 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DamageTakenHandler : MonoBehaviour {
-    void DamagePlayer() {
+    [SerializeField] GameObject playerBodyObj;
+    [SerializeField] float initialInvulTimer = 0.5f;
+    [SerializeField] float invulnerableTimer = 0.5f;
+    public int playerInvulnerable = 0;
+
+    public void DamagePlayer() {
+        Debug.Log("Player invulnerable due to damage");
+        playerInvulnerable = 1;
         StartCoroutine(PlayerDamagedCoroutine());
 
         IEnumerator PlayerDamagedCoroutine() {
-            Debug.Log("Running damage coroutine");
-            while (true) {
-                yield return new WaitForSeconds(1f);
-                Debug.Log("Running while loop");
-                if (transform.GetComponent<SpriteRenderer>().enabled == true) {
-                    transform.GetComponent<SpriteRenderer>().enabled = false;
-                } 
-                transform.GetComponent<SpriteRenderer>().enabled = true;
+            Color playerColor = playerBodyObj.GetComponent<SpriteRenderer>().color;
+            while (invulnerableTimer > 0f) {
+                invulnerableTimer -= Time.deltaTime;
+                Debug.Log("invulnerable timer: " + invulnerableTimer);
+                playerColor.a = 0.1f;
+                playerBodyObj.GetComponent<SpriteRenderer>().color = playerColor;
+                yield return new WaitForSeconds(0.125f);
+                playerColor.a = 255f;
+                playerBodyObj.GetComponent<SpriteRenderer>().color = playerColor;
                 yield return null;
             }
+            Debug.Log("Player vulnerable");
+            invulnerableTimer = initialInvulTimer;
+            playerInvulnerable = 0;
         }
     }
 }

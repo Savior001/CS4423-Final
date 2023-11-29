@@ -123,12 +123,10 @@ public class CollisionsHandler : MonoBehaviour {
             if (entityPrefab.tag == "Damage") {
                 // Debug.Log("[" + entityPrefab.tag + "] collision with " + collisionEntity.tag);
                 if (collisionEntity.tag == "Player") {
-                    // if (playerDamagedTimer == 1.5f) {
-                    //     Debug.Log("Starting damage coroutine");
-                    //     gameInfoSO.DealDamageToPlayer(10);
-                    //     DamagePlayer();
-                    // }
-                    gameInfoSO.DealDamageToPlayer(10);
+                    if (playerBody.GetComponent<DamageTakenHandler>().playerInvulnerable == 0) {
+                        playerBody.GetComponent<DamageTakenHandler>().DamagePlayer();
+                        gameInfoSO.DealDamageToPlayer(10);
+                    }
 
                     if (gameInfoSO.playerHP == 0) {
                         Debug.Log("You ded...");
