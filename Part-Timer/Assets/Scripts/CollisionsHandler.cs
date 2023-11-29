@@ -49,8 +49,8 @@ public class CollisionsHandler : MonoBehaviour {
 
     void FixedUpdate() {
         try {
-            if (playerDamagedTimer == 0f) {
-                StopCoroutine(PlayerDamagedCoroutine(null));
+            if (playerDamagedTimer <= 0f) {
+                Debug.Log("Stopping damage coroutine");
                 playerDamagedTimer = 1.5f;
             }
 
@@ -123,10 +123,12 @@ public class CollisionsHandler : MonoBehaviour {
             if (entityPrefab.tag == "Damage") {
                 // Debug.Log("[" + entityPrefab.tag + "] collision with " + collisionEntity.tag);
                 if (collisionEntity.tag == "Player") {
-                    if (playerDamagedTimer == 1.5f) {
-                        gameInfoSO.DealDamageToPlayer(10);
-                        StartCoroutine(PlayerDamagedCoroutine(collisionEntity.gameObject.transform.Find("PlayerBody").gameObject));
-                    }
+                    // if (playerDamagedTimer == 1.5f) {
+                    //     Debug.Log("Starting damage coroutine");
+                    //     gameInfoSO.DealDamageToPlayer(10);
+                    //     DamagePlayer();
+                    // }
+                    gameInfoSO.DealDamageToPlayer(10);
 
                     if (gameInfoSO.playerHP == 0) {
                         Debug.Log("You ded...");
@@ -231,19 +233,23 @@ public class CollisionsHandler : MonoBehaviour {
         // }
     }
 
-    IEnumerator PlayerDamagedCoroutine(GameObject playerObject) {
-        Color playerColor = playerObject.GetComponent<SpriteRenderer>().color;
-        yield return new WaitForSeconds(1f);
-        while (true) {
-            playerDamagedTimer -= Time.deltaTime;
-            if (playerColor.a == 255f) {
-                playerColor.a = 100f;
-                playerObject.GetComponent<SpriteRenderer>().color = playerColor;
-            } else {
-                playerColor.a = 255f;
-                playerObject.GetComponent<SpriteRenderer>().color = playerColor;
+    void DamagePlayer() {
+        StartCoroutine(PlayerDamagedCoroutine());
+
+        IEnumerator PlayerDamagedCoroutine() {
+            Debug.Log("Running damage coroutine");
+            while (playerDamagedTimer > 0f) {
+                yield return new WaitForSeconds(1f);
+                Debug.Log("Running while loop");
+                playerDamagedTimer -= Time.deltaTime / 2;
+                Debug.Log("Damage timer" + playerDamagedTimer);
+                if (playerBody.GetComponent<SpriteRenderer>().enabled == true) {
+                    playerBody.GetComponent<SpriteRenderer>().enabled = false;
+                } 
+                playerBody.GetComponent<SpriteRenderer>().enabled = true;
             }
-            Debug.Log("Updating player color: " + playerColor);
+            StopCoroutine(PlayerDamagedCoroutine());
+            playerBody.GetComponent<SpriteRenderer>().enabled = true;
             yield return null;
         }
     }
