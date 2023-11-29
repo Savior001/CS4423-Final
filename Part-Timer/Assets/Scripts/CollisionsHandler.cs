@@ -15,6 +15,7 @@ public class CollisionsHandler : MonoBehaviour {
     Animator animator;
     public GameInfoSO gameInfoSO;
     private int debugCount = 0;
+    float playerDamagedTimer = 1.5f;
     float damage = 0;
     string previousAnimation = "";
 
@@ -48,6 +49,11 @@ public class CollisionsHandler : MonoBehaviour {
 
     void FixedUpdate() {
         try {
+            if (playerDamagedTimer == 0f) {
+                StopCoroutine(PlayerDamagedCoroutine(null));
+                playerDamagedTimer = 1.5f;
+            }
+
             AnimatorClipInfo[] clip = animator.GetCurrentAnimatorClipInfo(0);
             string currentAnimation = clip[0].clip.name;
             if (previousAnimation != currentAnimation && (previousAnimation.Contains("Catch") && currentAnimation.Contains("Catch"))) {
@@ -117,7 +123,10 @@ public class CollisionsHandler : MonoBehaviour {
             if (entityPrefab.tag == "Damage") {
                 // Debug.Log("[" + entityPrefab.tag + "] collision with " + collisionEntity.tag);
                 if (collisionEntity.tag == "Player") {
-                    gameInfoSO.DealDamageToPlayer(10);
+                    if (playerDamagedTimer == 1.5f) {
+                        gameInfoSO.DealDamageToPlayer(10);
+                        StartCoroutine(PlayerDamagedCoroutine(collisionEntity.gameObject.transform.Find("PlayerBody").gameObject));
+                    }
 
                     if (gameInfoSO.playerHP == 0) {
                         Debug.Log("You ded...");
@@ -188,8 +197,6 @@ public class CollisionsHandler : MonoBehaviour {
                     GameObject vmPromptObj = vmCanvasObj.transform.Find("VMPrompt").gameObject;
                     vmCanvasObj.GetComponent<Canvas>().enabled = true;
                     vmPromptObj.GetComponent<SpriteRenderer>().enabled = true;
-                    // GameObject vmPromptObject = GameObject.Find("VMPrompt");
-                    // vmPromptObject.SetActive(true);
                 }
             }
         } catch (Exception e) {
@@ -216,16 +223,28 @@ public class CollisionsHandler : MonoBehaviour {
             }
         }
 
-        if (entityPrefab.tag == "VM") {
-                if (collisionEntity.tag == "Player") {
-                    GameObject vmPromptObject = GameObject.Find("VMPrompt");
-                    vmPromptObject.SetActive(false);
-                    // Vector3 cameraPos = cameraObject.transform.position; // = new Vector3 (17.75f, 0f, -10f);
-                    // Vector3 targetPosition = new Vector3(entityPrefab.transform.position.x, -2.6f, -10f);
-                    
-                    // cameraObject.transform.position = Vector3.Lerp(cameraPos, targetPosition, 0.3f);
-                    // cameraObject.GetComponent<Camera>().orthographicSize = zoom;
-                }
+        // if (entityPrefab.tag == "VM") {
+        //     if (collisionEntity.tag == "Player") {
+        //         GameObject vmPromptObject = GameObject.Find("VMPrompt");
+        //         vmPromptObject.SetActive(false);
+        //     }
+        // }
+    }
+
+    IEnumerator PlayerDamagedCoroutine(GameObject playerObject) {
+        Color playerColor = playerObject.GetComponent<SpriteRenderer>().color;
+        yield return new WaitForSeconds(1f);
+        while (true) {
+            playerDamagedTimer -= Time.deltaTime;
+            if (playerColor.a == 255f) {
+                playerColor.a = 100f;
+                playerObject.GetComponent<SpriteRenderer>().color = playerColor;
+            } else {
+                playerColor.a = 255f;
+                playerObject.GetComponent<SpriteRenderer>().color = playerColor;
             }
+            Debug.Log("Updating player color: " + playerColor);
+            yield return null;
+        }
     }
 }
