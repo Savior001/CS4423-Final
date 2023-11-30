@@ -6,6 +6,7 @@ using UnityEngine;
 public class WeaponHandler : MonoBehaviour {
     GameObject playerObj;
     GameObject playerBody;
+    public GameInfoSO gameInfoSO;
     private int debugCount = 0;
 
     void Awake() {
@@ -18,6 +19,12 @@ public class WeaponHandler : MonoBehaviour {
                 Debug.Log("Error on Awake(), player is kill: " + e);
                 debugCount += 1;
             }
+        }
+    }
+
+    void FixedUpdate() {
+        if (gameInfoSO.phase == 2) {
+            transform.GetComponent<SpriteRenderer>().enabled = true;
         }
     }
 

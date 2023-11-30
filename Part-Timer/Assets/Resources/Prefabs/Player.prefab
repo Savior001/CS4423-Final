@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c91e498fef39cdb45af6460093cf0508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 5.5
   power: 1
   jumpForce: 25
   wallSlideModifier: 1.5
@@ -336,6 +336,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5706875961266799393}
     m_Modifications:
+    - target: {fileID: 1624081915628553311, guid: 0cb7632e8cffb4da9bf2f1de457ff5e4, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 55a8fe5f1062bcb42a984d24edf1194f, type: 3}
+    - target: {fileID: 1740112207429754756, guid: 0cb7632e8cffb4da9bf2f1de457ff5e4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6233210610276017342, guid: 0cb7632e8cffb4da9bf2f1de457ff5e4, type: 3}
+      propertyPath: stapleClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 55a8fe5f1062bcb42a984d24edf1194f, type: 3}
     - target: {fileID: 6233210610276017342, guid: 0cb7632e8cffb4da9bf2f1de457ff5e4, type: 3}
       propertyPath: playerObject
       value: 
@@ -380,6 +392,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6790473173399377580, guid: 0cb7632e8cffb4da9bf2f1de457ff5e4, type: 3}
+      propertyPath: gameInfoSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 89be9e7458d49b74f9d57e6ebf2d2a35, type: 2}
     - target: {fileID: 8884092755973690971, guid: 0cb7632e8cffb4da9bf2f1de457ff5e4, type: 3}
       propertyPath: m_Name
       value: Weapon
