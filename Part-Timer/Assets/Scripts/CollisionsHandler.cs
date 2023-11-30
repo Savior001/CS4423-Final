@@ -15,7 +15,6 @@ public class CollisionsHandler : MonoBehaviour {
     Animator animator;
     public GameInfoSO gameInfoSO;
     private int debugCount = 0;
-    float playerDamagedTimer = 1.5f;
     float damage = 0;
     string previousAnimation = "";
 
@@ -49,11 +48,6 @@ public class CollisionsHandler : MonoBehaviour {
 
     void FixedUpdate() {
         try {
-            if (playerDamagedTimer <= 0f) {
-                Debug.Log("Stopping damage coroutine");
-                playerDamagedTimer = 1.5f;
-            }
-
             AnimatorClipInfo[] clip = animator.GetCurrentAnimatorClipInfo(0);
             string currentAnimation = clip[0].clip.name;
             if (previousAnimation != currentAnimation && (previousAnimation.Contains("Catch") && currentAnimation.Contains("Catch"))) {
@@ -123,9 +117,11 @@ public class CollisionsHandler : MonoBehaviour {
             if (entityPrefab.tag == "Damage") {
                 // Debug.Log("[" + entityPrefab.tag + "] collision with " + collisionEntity.tag);
                 if (collisionEntity.tag == "Player") {
+
                     if (playerBody.GetComponent<DamageTakenHandler>().playerInvulnerable == 0) {
                         playerBody.GetComponent<DamageTakenHandler>().DamagePlayer();
                         gameInfoSO.DealDamageToPlayer(10);
+                        gameInfoSO.DeductScore(50);
                     }
 
                     if (gameInfoSO.playerHP == 0) {
@@ -134,7 +130,6 @@ public class CollisionsHandler : MonoBehaviour {
                         Destroy(collisionEntity.gameObject);
                     }
 
-                    gameInfoSO.DeductScore(50);
                     Destroy(this.gameObject);
                 } else if (collisionEntity.tag == "Despawn") {
                     Destroy(this.gameObject);
@@ -208,12 +203,6 @@ public class CollisionsHandler : MonoBehaviour {
     }
 
     void OnTriggerExit2D(Collider2D collisionEntity) {
-        // if (entityPrefab.tag == "Wall") {
-        //     if (collisionEntity.tag == "Player") {
-        //         Debug.Log("[" + entityPrefab.tag + "] collision with " + collisionEntity.tag);
-        //         // entityPrefab.GetComponent<BoxCollider2D>().isTrigger = false;
-        //     }
-        // }
 
         if (entityPrefab.tag == "Checkpoint") {
             if (collisionEntity.tag == "Player") {
@@ -221,34 +210,6 @@ public class CollisionsHandler : MonoBehaviour {
                 GameObject wallObject = GameObject.FindWithTag("Wall");
                 wallObject.GetComponent<BoxCollider2D>().isTrigger = false;
             }
-        }
-
-        // if (entityPrefab.tag == "VM") {
-        //     if (collisionEntity.tag == "Player") {
-        //         GameObject vmPromptObject = GameObject.Find("VMPrompt");
-        //         vmPromptObject.SetActive(false);
-        //     }
-        // }
-    }
-
-    void DamagePlayer() {
-        StartCoroutine(PlayerDamagedCoroutine());
-
-        IEnumerator PlayerDamagedCoroutine() {
-            Debug.Log("Running damage coroutine");
-            while (playerDamagedTimer > 0f) {
-                yield return new WaitForSeconds(1f);
-                Debug.Log("Running while loop");
-                playerDamagedTimer -= Time.deltaTime / 2;
-                Debug.Log("Damage timer" + playerDamagedTimer);
-                if (playerBody.GetComponent<SpriteRenderer>().enabled == true) {
-                    playerBody.GetComponent<SpriteRenderer>().enabled = false;
-                } 
-                playerBody.GetComponent<SpriteRenderer>().enabled = true;
-            }
-            StopCoroutine(PlayerDamagedCoroutine());
-            playerBody.GetComponent<SpriteRenderer>().enabled = true;
-            yield return null;
         }
     }
 }

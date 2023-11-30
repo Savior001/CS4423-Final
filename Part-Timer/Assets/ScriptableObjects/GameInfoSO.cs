@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameInfoSO : ScriptableObject {
     TimerText timerText;
     [SerializeField] private int initialTimer = 0;
-    [SerializeField] private int initialPhase = 0;
+    [SerializeField] private int initialPhase = 1;
     [SerializeField] private int initialPlayerHP = 100;
     [SerializeField] private float initialPlayerPP = 0f;
     [SerializeField] private float initialPlayerSpeed = 6;

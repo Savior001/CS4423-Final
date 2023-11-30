@@ -258,6 +258,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerBodyObj: {fileID: 6272776373138934652}
+  initialInvulTimer: 0.25
+  invulnerableTimer: 0.25
+  playerAlphaValue: 0.5
+  playerInvulnerable: 0
 --- !u!1001 &93529773848691754
 PrefabInstance:
   m_ObjectHideFlags: 0

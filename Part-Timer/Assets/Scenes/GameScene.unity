@@ -2451,7 +2451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvasGroup: {fileID: 1338735651}
-  fadeSpeed: 1690
+  fadeSpeed: 0
   superiorInfoSO: {fileID: 11400000, guid: 4e02a402a254b3844b6449d0b69ad700, type: 2}
 --- !u!225 &1338735651
 CanvasGroup:
@@ -2461,7 +2461,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1338735648}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0

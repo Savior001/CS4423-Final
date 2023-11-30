@@ -19,7 +19,7 @@ public class PhaseText : MonoBehaviour {
 
     void Start() {
         phaseText = GetComponent<Text>();
-        phaseText.text = phase.ToString();
+        phaseText.text = gameInfoSO.phase.ToString();
     }
 
     void Update() {
