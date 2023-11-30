@@ -100,15 +100,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28fa4449df7bea14ea8beae4b9b88860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  speed: 2
   xPos: 0
-  timer: 1
-  moveSpeedMultiplier: 1
-  timerStop: 30
-  transitionTime: 0.6
+  timer: 0
+  transitionTime: 0.1
+  lvlOneHealthFrom: 100
+  lvlOneHealthTo: 200
+  lvlOneTimerFrom: 50
+  lvlOneTimerTo: 60
+  lvlTwoHealthFrom: 300
+  lvlTwoHealthTo: 400
+  lvlTwoTimerFrom: 65
+  lvlTwoTimerTo: 70
+  lvlThreeHealthFrom: 500
+  lvlThreeHealthTo: 700
+  lvlThreeTimerFrom: 75
+  lvlThreeTimerTo: 80
   phase: 1
   gameInfoSO: {fileID: 11400000, guid: 89be9e7458d49b74f9d57e6ebf2d2a35, type: 2}
+  superiorInfoSO: {fileID: 11400000, guid: 4e02a402a254b3844b6449d0b69ad700, type: 2}
+  superior:
+    health: 0
+    speed: 0
+    moveSpeedMultiplier: 0
+    timerStop: 0
 --- !u!50 &-6065386978890630791
 Rigidbody2D:
   serializedVersion: 4
@@ -192,7 +206,7 @@ PrefabInstance:
     - target: {fileID: 300652569391513807, guid: 8eda69f82feddbd47aa694e817346995, type: 3}
       propertyPath: superiorObject
       value: 
-      objectReference: {fileID: 1165166787553689312}
+      objectReference: {fileID: 8093325500202738215}
     - target: {fileID: 5140423114037428649, guid: 8eda69f82feddbd47aa694e817346995, type: 3}
       propertyPath: m_Name
       value: ObjectSpawner

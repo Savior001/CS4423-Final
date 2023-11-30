@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 831d57731aa4f2e4da255b330155704f, type: 3}
   m_Name: SuperiorInfoSO
   m_EditorClassIdentifier: 
-  health: 685.0724
-  speed: 3.5234509
-  moveSpeedMultiplier: 2.575336
-  timerStop: 77
+  health: -2.1342773
+  speed: 1.6765938
+  moveSpeedMultiplier: 0.89463276
+  timerStop: 53

@@ -13,19 +13,21 @@ MonoBehaviour:
   m_Name: GameInfoSO
   m_EditorClassIdentifier: 
   initialTimer: 0
-  initialPhase: 0
+  initialPhase: 1
   initialPlayerHP: 100
   initialPlayerPP: 0
-  initialPlayerSpeed: 6
+  initialPlayerSpeed: 5.5
   initialPlayerPower: 1
   initialPlayerScore: 0
   initialSelectedVMItem: 0
+  initialLevel: 1
   timer: 0
-  phase: 0
+  phase: 1
   playerHP: 100
-  playerPP: 0
-  playerSpeed: 6
-  playerPower: 1.75
+  playerPP: 1
+  playerSpeed: 5.5
+  playerPower: 1
   playerScore: 0
-  playerMoney: 0.22000003
+  playerMoney: 0
   selectedVMItem: 0
+  level: 1

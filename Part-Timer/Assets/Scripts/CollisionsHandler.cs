@@ -189,9 +189,7 @@ public class CollisionsHandler : MonoBehaviour {
                     GameObject cameraObject = GameObject.FindWithTag("MainCamera");
                     cameraObject.GetComponent<CameraFollow>().follow = 1;
                     GameObject vmCanvasObj = GameObject.FindWithTag("VMCanvas");
-                    GameObject vmPromptObj = vmCanvasObj.transform.Find("VMPrompt").gameObject;
-                    vmCanvasObj.GetComponent<Canvas>().enabled = true;
-                    vmPromptObj.GetComponent<SpriteRenderer>().enabled = true;
+                    vmCanvasObj.GetComponent<CanvasGroup>().alpha = 1;
                 }
             }
         } catch (Exception e) {
