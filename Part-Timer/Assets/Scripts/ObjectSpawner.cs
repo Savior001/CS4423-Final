@@ -37,9 +37,30 @@ public class ObjectSpawner : MonoBehaviour {
                 yield return new WaitForSeconds(Random.Range(0.1f, 1.5f));
                 GameObject spawnObject;
 
+                
+                // if (entityPrefab.tag == "Damage") {
+                //     if(number <= 1) {
+                //         transform.rotation = Quaternion.Euler(0, 0, 0);
+                //     } else if (number <= 2) {
+                //         transform.rotation = Quaternion.Euler(0, 0, 120);
+                //     } else {
+                //         transform.rotation = Quaternion.Euler(0, 0, -90);
+                //     }
+                // }
                 // spawnObject = Instantiate(spawnChoice, new Vector3(superiorObject.transform.position.x, spawnHeigth, 0), Quaternion.identity);
                 if (phase == 1) {
-                    spawnObject = Instantiate(spawnChoice, new Vector3(superiorObject.transform.position.x, spawnHeigth, 0), Quaternion.identity);
+                    int number = Random.Range(0, 3);
+                    Quaternion rotation = Quaternion.Euler(0,0,0);
+                    
+                    if(number <= 1) {
+                        rotation = Quaternion.Euler(0, 0, 0);
+                    } else if (number <= 2) {
+                        rotation = Quaternion.Euler(0, 0, 120);
+                    } else {
+                        rotation = Quaternion.Euler(0, 0, -90);
+                    }
+
+                    spawnObject = Instantiate(spawnChoice, new Vector3(superiorObject.transform.position.x, spawnHeigth, 0), rotation);
                 } else {
                     if (trasitionTime) {
                         yield return new WaitForSeconds(6);

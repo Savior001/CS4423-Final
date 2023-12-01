@@ -42,7 +42,6 @@ public class ItemSelectHandler : MonoBehaviour, IPointerExitHandler, IPointerEnt
         image.color = color;
         if (vmItems.Count == 0) {
             PopulateItems();
-            
         }
 
         // for (int i = 1; i < vmItems.Count; i++) {
@@ -100,6 +99,7 @@ public class ItemSelectHandler : MonoBehaviour, IPointerExitHandler, IPointerEnt
     }
 
     void PopulateItems() {
+        Debug.Log("Populating items");
         vmItems.Add(new VMItem("Popsi Cola", " : Heals 20 HP, but is it worth it?", 0, 20, 2.25f));
         vmItems.Add(new VMItem("Classic Cola", " : Heals 30 HP, better. Ah!", 0, 30, 2.5f));
         vmItems.Add(new VMItem("P-Water", " : Heals 45 HP, electrolytes for taste.", 0, 45, 3.25f));

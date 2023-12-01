@@ -31,7 +31,7 @@ public class ObjectMovement : MonoBehaviour {
             // }
 
             Vector3 vel = Vector3.zero;
-            number = Random.Range(0, 1);
+            number = Random.Range(0, 3);
 
             if (phase == 1) {
                 vel.y = -1;
@@ -40,14 +40,6 @@ public class ObjectMovement : MonoBehaviour {
             }
 
             transform.position += vel * (speed + Random.Range(1.5f, 3)) * Time.deltaTime;
-
-            if (entityPrefab.tag == "Damage") {
-                if(number == 0) {
-                    transform.Rotate(Vector3.forward);
-                } else {
-                    transform.Rotate(Vector3.back);
-                }
-            }
             yield return null;
         }
     }

@@ -50,7 +50,7 @@ public class PlayerInputHandler : MonoBehaviour {
                     fpe.ActivateEffect(Vector3.zero);
                 }
 
-                if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W)) {
+                if (Input.GetKeyDown(KeyCode.W)) {
                     movement.Jump();
                 }
 
