@@ -40,6 +40,12 @@ public class SuperiorMovement : MonoBehaviour {
     public GameInfoSO gameInfoSO;
     public SuperiorInfoSO superiorInfoSO;
     public Superior superior;
+    public Animator animator;
+    Rigidbody2D rb;
+
+    void Awake() {
+        rb = GetComponent<Rigidbody2D>();
+    }
 
     void Start() {
         superior = SuperiorRandomizer();
@@ -63,6 +69,9 @@ public class SuperiorMovement : MonoBehaviour {
     }
 
     void FixedUpdate() {
+        
+        Debug.Log("Current superior velocity (x, y): [" + rb.velocity.x + ", " + rb.velocity.y + "]");
+
         runningTime = (runningTime + Time.deltaTime) * superior.moveSpeedMultiplier;
         if (timer > superior.timerStop) {
             phase = 2;
@@ -77,13 +86,18 @@ public class SuperiorMovement : MonoBehaviour {
                 MovementPhaseTwo();
             }
         }
+        animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
     }
 
     void Movement() {
-        superior.moveSpeedMultiplier += timer;
+        Vector3 vel = (new Vector3(Random.Range(-4.5f, 4.5f), 0, 0));
+        superior.moveSpeedMultiplier += timer * 0.005f;
+        vel *= superior.moveSpeedMultiplier;//TOO FAST
 
         if (runningTime >= timer) {
-            transform.position = Vector3.Lerp(transform.position, newPos, Time.deltaTime * superior.speed);
+            vel.y = rb.velocity.y;
+            rb.velocity = vel;
+            //transform.position = Vector3.Lerp(transform.position, newPos, Time.deltaTime * superior.speed);
 
             if (Vector3.Distance(transform.position, newPos) <= 0.01f) {
                 xPos = Random.Range(-4.5f, 4.5f);
